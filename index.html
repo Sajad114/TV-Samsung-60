@@ -1,322 +1,1536 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارة القاصة المالية</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #f8f9fa;
-            --accent-color: #2980b9;
-            --text-color: #333;
-            --light-color: #fff;
-        }
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f5f7fa;
-            color: var(--text-color);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: none;
-            margin-bottom: 20px;
-        }
-        
-        .card-header {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            border-radius: 10px 10px 0 0 !important;
-            font-weight: 600;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-        
-        .balance-display {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .expense-table th {
-            background-color: var(--secondary-color);
-        }
-        
-        .modal-header {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-        
-        @media (max-width: 768px) {
-            .balance-display {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>شاشة LG 60 بوصة سمارت - شركة سوبر ماكس للإلكترونيات</title>
+  <meta name="description" content="اشتري شاشة LG 60 بوصة سمارت بأفضل سعر في العراق مع ضمان سنتين وخدمة التوصيل لكافة المحافظات">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2a2e35;
+      --accent: #e63946;
+      --bg: #f8f9fa;
+      --white: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --btn-primary: #007f5f;
+      --btn-hover: #009b71;
+      --border: #e0e0e0;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    .top-bar {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .top-bar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .contact-links a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .contact-links a:hover {
+      color: #cccccc;
+    }
+
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 22px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      background-color: var(--accent);
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .breadcrumb a {
+      color: var(--btn-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .product-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .product-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Gallery Styles */
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .main-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      aspect-ratio: 16/9;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .main-image:hover {
+      transform: scale(1.02);
+    }
+
+    .zoom-icon {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .zoom-icon:hover {
+      background-color: var(--btn-primary);
+    }
+
+    .thumbnail-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .thumbnail {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+
+    .thumbnail:hover, .thumbnail.active {
+      border-color: var(--btn-primary);
+      transform: scale(1.03);
+    }
+
+    .video-container {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+
+    .video-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2));
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 127, 95, 0.8);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .play-button:hover {
+      background-color: var(--btn-primary);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Product Info */
+    .product-info {
+      background: var(--white);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 120px;
+    }
+
+    .product-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .product-subtitle {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      color: #ffc107;
+    }
+
+    .review-count {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .price-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .current-price {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .old-price {
+      font-size: 18px;
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .badge {
+      background-color: var(--accent);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .delivery-info {
+      background-color: #f5f5f5;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .delivery-info i {
+      color: var(--btn-primary);
+      font-size: 20px;
+    }
+
+    .delivery-text {
+      font-size: 14px;
+    }
+
+    .delivery-text strong {
+      color: var(--btn-primary);
+    }
+
+    .specs-section {
+      margin: 25px 0;
+    }
+
+    .specs-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .specs-title i {
+      color: var(--btn-primary);
+    }
+
+    .specs-list {
+      list-style: none;
+    }
+
+    .specs-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+    }
+
+    .specs-list li:last-child {
+      border-bottom: none;
+    }
+
+    .spec-key {
+      font-weight: 500;
+      min-width: 120px;
+      color: var(--text-light);
+    }
+
+    .spec-value {
+      font-weight: 600;
+    }
+
+    .more-specs {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .more-specs.show {
+      max-height: 500px;
+    }
+
+    .toggle-specs {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--btn-primary);
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .toggle-specs:hover {
+      background-color: rgba(0, 127, 95, 0.1);
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: none;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .qty-btn:hover {
+      background-color: var(--btn-primary);
+      color: white;
+      border-color: var(--btn-primary);
+    }
+
+    .qty-value {
+      font-size: 18px;
+      font-weight: 600;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px 20px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--btn-primary);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 127, 95, 0.2);
+    }
+
+    .btn-outline {
+      background: none;
+      border: 2px solid var(--btn-primary);
+      color: var(--btn-primary);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(0, 127, 95, 0.1);
+    }
+
+    .policy-link {
+      color: var(--btn-primary);
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 15px;
+      transition: var(--transition);
+    }
+
+    .policy-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .close-btn:hover {
+      color: var(--accent);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--btn-primary);
+      box-shadow: 0 0 0 3px rgba(0, 127, 95, 0.2);
+    }
+
+    .order-summary {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .summary-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .summary-total {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--accent);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+    }
+
+    /* Policy Modal */
+    .policy-list {
+      list-style: none;
+    }
+
+    .policy-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+
+    .policy-list li:last-child {
+      border-bottom: none;
+    }
+
+    .policy-number {
+      background-color: var(--btn-primary);
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Features Section */
+    .features-section {
+      margin: 50px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--btn-primary);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      color: var(--btn-primary);
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #2a2e35;
+      color: white;
+      padding: 40px 0 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--btn-primary);
+    }
+
+    .footer-about {
+      margin-bottom: 20px;
+    }
+
+    .footer-about p {
+      margin-bottom: 15px;
+    }
+
+    .footer-contact {
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .contact-icon {
+      color: var(--btn-primary);
+      font-size: 18px;
+      margin-top: 3px;
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-text a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-text a:hover {
+      color: var(--btn-primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--btn-primary);
+      transform: translateY(-3px);
+    }
+
+    .newsletter-form {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-family: inherit;
+      padding-right: 40px;
+    }
+
+    .newsletter-btn {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: var(--btn-primary);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .newsletter-message {
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .success {
+      color: #28a745;
+    }
+
+    .error {
+      color: #dc3545;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      color: #aaaaaa;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+      .top-bar-container {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .product-title {
+        font-size: 24px;
+      }
+      
+      .current-price {
+        font-size: 24px;
+      }
+      
+      .modal-content {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-wallet2"></i> إدارة القاصة المالية
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button class="btn btn-outline-danger" id="resetAll">
-                            <i class="bi bi-trash"></i> إغلاق القاصة
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container py-4">
-        <!-- بطاقة الرصيد -->
-        <div class="card">
-            <div class="card-header">
-                <i class="bi bi-cash-stack"></i> رصيد القاصة
-            </div>
-            <div class="card-body text-center">
-                <h3 class="card-title">الرصيد الحالي</h3>
-                <div class="balance-display" id="currentBalance">0 د.ع</div>
-                <div class="mt-3">
-                    <button class="btn btn-primary me-2" id="addInitialBalance">
-                        <i class="bi bi-plus-circle"></i> إضافة رصيد أساسي
-                    </button>
-                    <button class="btn btn-primary" id="addAdditionalFunds">
-                        <i class="bi bi-plus-lg"></i> إيداع أموال إضافية
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- بطاقة التحويلات -->
-        <div class="card">
-            <div class="card-header">
-                <i class="bi bi-arrow-left-right"></i> التحويلات
-            </div>
-            <div class="card-body">
-                <button class="btn btn-primary" id="transferFunds">
-                    <i class="bi bi-send"></i> تحويل أموال
-                </button>
-            </div>
-        </div>
-
-        <!-- بطاقة إضافة مصروف -->
-        <div class="card">
-            <div class="card-header">
-                <i class="bi bi-cart-plus"></i> تسجيل مصروف جديد
-            </div>
-            <div class="card-body">
-                <form id="expenseForm">
-                    <div class="mb-3">
-                        <label for="expenseAmount" class="form-label">المبلغ (دينار عراقي)</label>
-                        <input type="number" class="form-control" id="expenseAmount" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="expenseCategory" class="form-label">نوع المصروف</label>
-                        <select class="form-select" id="expenseCategory" required>
-                            <option value="">اختر نوع المصروف</option>
-                            <option value="صيانة">صيانة</option>
-                            <option value="مشتريات">مشتريات</option>
-                            <option value="مواصلات">مواصلات</option>
-                            <option value="تسلية">تسلية</option>
-                            <option value="فواتير">فواتير</option>
-                            <option value="أخرى">أخرى</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="expenseDescription" class="form-label">وصف المصروف (اختياري)</label>
-                        <textarea class="form-control" id="expenseDescription" rows="2"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-save"></i> حفظ المصروف
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- بطاقة المصاريف -->
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-list-check"></i> سجل المصاريف
-                </div>
-                <div>
-                    <select class="form-select form-select-sm" id="filterCategory" style="width: 150px;">
-                        <option value="">جميع الأنواع</option>
-                        <option value="صيانة">صيانة</option>
-                        <option value="مشتريات">مشتريات</option>
-                        <option value="مواصلات">مواصلات</option>
-                        <option value="تسلية">تسلية</option>
-                        <option value="فواتير">فواتير</option>
-                        <option value="أخرى">أخرى</option>
-                    </select>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover expense-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>المبلغ</th>
-                                <th>النوع</th>
-                                <th>الوصف</th>
-                                <th>التاريخ</th>
-                                <th>الإجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="expensesTableBody">
-                            <!-- سيتم ملؤها بالجافاسكريبت -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- بطاقة الإحصائيات -->
-        <div class="card">
-            <div class="card-header">
-                <i class="bi bi-pie-chart"></i> الإحصائيات
-            </div>
-            <div class="card-body">
-                <canvas id="expensesChart"></canvas>
-            </div>
-        </div>
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-container">
+    <div class="contact-links">
+      <a href="tel:07711272744">
+        <i class="fas fa-phone"></i>
+        07711272744
+      </a>
+      <a href="mailto:info@supermax.iq">
+        <i class="fas fa-envelope"></i>
+        info@supermax.iq
+      </a>
     </div>
-
-    <!-- Modal لإضافة الرصيد -->
-    <div class="modal fade" id="balanceModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="balanceModalTitle">إضافة رصيد</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="balanceForm">
-                        <div class="mb-3">
-                            <label for="balanceAmount" class="form-label">المبلغ (دينار عراقي)</label>
-                            <input type="number" class="form-control" id="balanceAmount" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                    <button type="button" class="btn btn-primary" id="confirmBalance">تأكيد</button>
-                </div>
-            </div>
-        </div>
+    <div class="working-hours">
+      <i class="fas fa-clock"></i>
+      أوقات العمل: من السبت إلى الخميس - 11 صباحاً إلى 4 مساءً
     </div>
+  </div>
+</div>
 
-    <!-- Modal للتحويل -->
-    <div class="modal fade" id="transferModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">تحويل أموال</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="transferForm">
-                        <div class="mb-3">
-                            <label for="transferAmount" class="form-label">المبلغ (دينار عراقي)</label>
-                            <input type="number" class="form-control" id="transferAmount" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="transferAccount" class="form-label">الحساب الهدف</label>
-                            <input type="text" class="form-control" id="transferAccount" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="transferDescription" class="form-label">الوصف (اختياري)</label>
-                            <textarea class="form-control" id="transferDescription" rows="2"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                    <button type="button" class="btn btn-primary" id="confirmTransfer">تحويل</button>
-                </div>
-            </div>
-        </div>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="#">
+      <img src="https://i.imgur.com/VuF6X8s.jpeg" alt="Super Max Logo" class="logo">
+    </a>
+    <div class="cart-icon" onclick="openCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
     </div>
+  </div>
+</header>
 
-    <!-- Modal لتعديل المصروف -->
-    <div class="modal fade" id="editExpenseModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">تعديل المصروف</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editExpenseForm">
-                        <input type="hidden" id="editExpenseId">
-                        <div class="mb-3">
-                            <label for="editExpenseAmount" class="form-label">المبلغ (دينار عراقي)</label>
-                            <input type="number" class="form-control" id="editExpenseAmount" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editExpenseCategory" class="form-label">نوع المصروف</label>
-                            <select class="form-select" id="editExpenseCategory" required>
-                                <option value="صيانة">صيانة</option>
-                                <option value="مشتريات">مشتريات</option>
-                                <option value="مواصلات">مواصلات</option>
-                                <option value="تسلية">تسلية</option>
-                                <option value="فواتير">فواتير</option>
-                                <option value="أخرى">أخرى</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editExpenseDescription" class="form-label">وصف المصروف (اختياري)</label>
-                            <textarea class="form-control" id="editExpenseDescription" rows="2"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                    <button type="button" class="btn btn-primary" id="saveEditExpense">حفظ التعديلات</button>
-                </div>
-            </div>
+<!-- Main Content -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="#">الرئيسية</a> / <a href="#">الإلكترونيات</a> / <a href="#">شاشات تلفزيون</a> / شاشة LG 60 بوصة
+  </div>
+  
+  <div class="product-container">
+    <div class="gallery">
+      <div class="main-image-container">
+        <img src="http://i.imgur.com/S8FhiYM.jpeg
+" alt="شاشة LG 60 بوصة" class="main-image" id="mainImage">
+        <div class="zoom-icon" onclick="zoomImage()">
+          <i class="fas fa-search-plus"></i>
         </div>
+      </div>
+      <div class="thumbnail-container">
+        <img src="http://i.imgur.com/S8FhiYM.jpeg
+" alt="شاشة LG - صورة 1" class="thumbnail active" onclick="changeImage(this)">
+        <img src="http://i.imgur.com/Dk85JW3.jpeg
+" alt="شاشة LG - صورة 2" class="thumbnail" onclick="changeImage(this)">
+        <img src="http://i.imgur.com/8uN1CKB.jpeg
+" alt="شاشة LG - صورة 3" class="thumbnail" onclick="changeImage(this)">
+        <img src="http://i.imgur.com/V0KKH9k.jpeg
+" alt="شاشة LG - صورة 4" class="thumbnail" onclick="changeImage(this)">
+      </div>
+      <div class="video-container">
+  <iframe src="https://streamable.com/e/ozuhoz?autoplay=1&muted=1" frameborder="0" allowfullscreen></iframe>
+  <div class="play-button" onclick="playVideo()">
+    <i class="fas fa-play"></i>
+  </div>
+</div>
+
+    <div class="product-info">
+      <h1 class="product-title">شاشة LG 60 بوصة سمارت UHD</h1>
+      <p class="product-subtitle">أحدث إصدار 2025 بشاشة فائقة الوضوح وتقنيات الذكاء الاصطناعي</p>
+      
+      <div class="rating">
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <span class="review-count">(47 تقييم)</span>
+      </div>
+      
+      <div class="price-container">
+        <span class="current-price">330,000 دينار عراقي</span>
+        <span class="old-price">350,000 دينار</span>
+        <span class="badge">وفر 20,000 دينار</span>
+      </div>
+      
+      <div class="delivery-info">
+        <i class="fas fa-truck"></i>
+        <div class="delivery-text">
+          <strong>توصيل سريع</strong> إلى جميع محافظات العراق خلال 2-3 أيام عمل
+        </div>
+      </div>
+      
+      <div class="specs-section">
+        <h3 class="specs-title">
+          <i class="fas fa-list-ul"></i>
+          المواصفات الفنية
+        </h3>
+        <ul class="specs-list">
+          <li>
+            <span class="spec-key">النوع:</span>
+            <span class="spec-value">LG سمارت TV</span>
+          </li>
+          <li>
+            <span class="spec-key">نظام التشغيل:</span>
+            <span class="spec-value">أندرويد 15</span>
+          </li>
+          <li>
+            <span class="spec-key">الدقة:</span>
+            <span class="spec-value">4K UHD - 3840 × 2160</span>
+          </li>
+          <li>
+            <span class="spec-key">معدل التحديث:</span>
+            <span class="spec-value">60Hz</span>
+          </li>
+        </ul>
+        
+        <div class="more-specs" id="moreSpecs">
+          <ul class="specs-list">
+            <li>
+              <span class="spec-key">الذاكرة:</span>
+              <span class="spec-value">رام 2 جيجا - تخزين 8 جيجا</span>
+            </li>
+            <li>
+              <span class="spec-key">المنافذ:</span>
+              <span class="spec-value">USB ×2 - HDMI ×3 - Optical Audio ×1</span>
+            </li>
+            <li>
+              <span class="spec-key">التوصيل:</span>
+              <span class="spec-value">بلوتوث 5.2 - واي فاي دبل باندا</span>
+            </li>
+            <li>
+              <span class="spec-key">تقنيات الصورة:</span>
+              <span class="spec-value">HDR10, HLG, Dynamic Color</span>
+            </li>
+            <li>
+              <span class="spec-key">الصوت:</span>
+              <span class="spec-value">20W Stereo - Dolby Audio</span>
+            </li>
+            <li>
+              <span class="spec-key">الضمان:</span>
+              <span class="spec-value">سنتين شاملة</span>
+            </li>
+            <li>
+              <span class="spec-key">الأبعاد:</span>
+              <span class="spec-value">134.5 × 77.1 × 9.9 سم</span>
+            </li>
+            <li>
+              <span class="spec-key">الوزن:</span>
+              <span class="spec-value">18.5 كغم</span>
+            </li>
+          </ul>
+        </div>
+        
+        <button class="toggle-specs" onclick="toggleSpecs()">
+          <i class="fas fa-chevron-down" id="specsIcon"></i>
+          عرض المزيد من المواصفات
+        </button>
+      </div>
+      
+      <div class="quantity-control">
+        <span>الكمية:</span>
+        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+        <span class="qty-value" id="qty">1</span>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="openModal()">
+          <i class="fas fa-shopping-cart"></i>
+          أضف إلى السلة
+        </button>
+        <button class="btn btn-outline" onclick="openWhatsApp('استفسار عن شاشة LG 60 بوصة')">
+          <i class="fab fa-whatsapp"></i>
+          استفسر عبر واتساب
+        </button>
+      </div>
+      
+      <a href="#" class="policy-link" onclick="openPolicy(event)">
+        <i class="fas fa-file-alt"></i>
+        سياسة الاسترجاع والضمان
+      </a>
     </div>
-
-    <!-- نهاية الصفحة -->
-    <footer class="bg-light text-center py-3 mt-4">
-        <div class="container">
-            <p class="mb-0">تطبيق إدارة القاصة المالية &copy; 2023</p>
+  </div>
+  
+  <!-- Product Features -->
+  <div class="features-section">
+    <h2 class="section-title">مميزات شاشة LG 60 بوصة</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tv"></i>
         </div>
-    </footer>
+        <h3 class="feature-title">جودة صورة فائقة</h3>
+        <p class="feature-desc">دقة 4K UHD مع تقنية HDR10 لتجربة مشاهدة غامرة بألوان زاهية وتفاصيل دقيقة</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3 class="feature-title">نظام أندرويد الذكي</h3>
+        <p class="feature-desc">تمتع بجميع تطبيقاتك المفضلة مثل يوتيوب ونيتفليكس مباشرة على شاشتك</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">ضمان شامل</h3>
+        <p class="feature-desc">ضمان لمدة سنتين يشمل قطع الغيار والصيانة في مراكزنا المعتمدة</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-headphones"></i>
+        </div>
+        <h3 class="feature-title">صوت سينمائي</h3>
+        <p class="feature-desc">نظام صوت Dolby Audio بقوة 20 واط لتجربة صوتية غامرة</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- المكتبات المطلوبة -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src="app.js"></script>
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">إتمام عملية الشراء</h3>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="name" class="form-label">الاسم الكامل</label>
+        <input type="text" id="name" class="form-control" placeholder="ادخل اسمك الثلاثي">
+      </div>
+      
+      <div class="form-group">
+        <label for="phone" class="form-label">رقم الهاتف</label>
+        <input type="tel" id="phone" class="form-control" placeholder="07711272744">
+      </div>
+      
+      <div class="form-group">
+        <label for="province" class="form-label">المحافظة</label>
+        <input type="text" id="province" class="form-control" placeholder="مثال: بغداد، البصرة، إربيل">
+      </div>
+      
+      <div class="form-group">
+        <label for="address" class="form-label">العنوان التفصيلي</label>
+        <input type="text" id="address" class="form-control" placeholder="المنطقة، الشارع، قرب معلم مشهور">
+      </div>
+      
+      <button class="btn btn-primary" onclick="confirmOrder()">
+        <i class="fas fa-check-circle"></i>
+        تأكيد الطلب
+      </button>
+      
+      <div class="order-summary" id="orderSummary" style="display: none;">
+        <h4 class="summary-title">
+          <i class="fas fa-receipt"></i>
+          ملخص الطلب
+        </h4>
+        <div class="summary-item">
+          <span>المنتج:</span>
+          <span>شاشة LG 60 بوصة</span>
+        </div>
+        <div class="summary-item">
+          <span>الكمية:</span>
+          <span id="summaryQty">1</span>
+        </div>
+        <div class="summary-item">
+          <span>السعر:</span>
+          <span>330,000 دينار</span>
+        </div>
+        <div class="summary-total" id="summaryTotal">
+          330,000 دينار
+        </div>
+      </div>
+      
+      <a href="#" class="btn whatsapp-btn" id="whatsappBtn" style="display: none;">
+        <i class="fab fa-whatsapp"></i>
+        إرسال الطلب عبر واتساب
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Policy Modal -->
+<div class="modal" id="policyModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">سياسة الاسترجاع والضمان</h3>
+      <button class="close-btn" onclick="closePolicy()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <ul class="policy-list">
+        <li>
+          <span class="policy-number">1</span>
+          <span>يمكنك استرجاع المنتج خلال أول 3 أيام من تاريخ الشراء مع ضرورة وجود الفاتورة الأصلية</span>
+        </li>
+        <li>
+          <span class="policy-number">2</span>
+          <span>يشترط لاسترجاع المنتج وجود جميع ملحقاته بالعبوة الأصلية دون أي تلف أو خدوش</span>
+        </li>
+        <li>
+          <span class="policy-number">3</span>
+          <span>يجب أن يكون الكرتون الخارجي سليماً وغير ممزق أو مخدوش</span>
+        </li>
+        <li>
+          <span class="policy-number">4</span>
+          <span>في حالة إزالة الغلاف الأمامي للشاشة، يتم خصم مبلغ 35,000 دينار من المبلغ المسترجع</span>
+        </li>
+        <li>
+          <span class="policy-number">5</span>
+          <span>يحق للعميل استرجاع أو استبدال الشاشة بدون مبرر خلال فترة الثلاثة أيام</span>
+        </li>
+        <li>
+          <span class="policy-number">6</span>
+          <span>الضمان يشمل قطع الغيار والصيانة لمدة سنتين من تاريخ الشراء</span>
+        </li>
+        <li>
+          <span class="policy-number">7</span>
+          <span>لا يغطي الضمان الأعطال الناتجة عن سوء الاستخدام أو الكوارث الطبيعية</span>
+        </li>
+        <li>
+          <span class="policy-number">8</span>
+          <span>للاستفادة من الضمان يجب تقديم الفاتورة الأصلية وكرت الضمان</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <div class="footer-about">
+            <h3>عن شركة سوبر ماكس</h3>
+            <p>شركة رائدة في مجال الإلكترونيات والأجهزة المنزلية في العراق، نقدم أحدث المنتجات بأفضل الأسعار مع ضمان وجودة عالية.</p>
+            <p>نحن الوكيل المعتمد للعديد من الماركات العالمية في السوق العراقي.</p>
+          </div>
+          
+          <div class="footer-contact">
+            <h3>تواصل معنا</h3>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt contact-icon"></i>
+              <div class="contact-text">
+                <a href="https://maps.app.goo.gl/p6JMGBdnJSgTaeMk6?g_st=ic" target="_blank">
+                  الكرادة خارج، مجمع عبد الرسول، بغداد، العراق
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <i class="fas fa-phone contact-icon"></i>
+              <div class="contact-text">
+                <a href="tel:07711272744">07711272744</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <i class="fas fa-envelope contact-icon"></i>
+              <div class="contact-text">
+                <a href="mailto:info@supermax.iq">info@supermax.iq</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>ساعات العمل</h3>
+          <div class="working-hours">
+            <p>من السبت إلى الخميس:</p>
+            <p>11:00 صباحاً - 4:00 مساءً</p>
+            <p>الجمعة: عطلة رسمية</p>
+          </div>
+          
+          <div class="newsletter">
+            <h3>النشرة البريدية</h3>
+            <p>اشترك ليصلك كل جديد عن عروضنا و منتجاتنا</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+              <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني" required>
+              <button type="submit" class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+              <div class="newsletter-message success" id="successMessage">
+                شكراً للاشتراك! سيصلك كل جديد على بريدك الإلكتروني.
+              </div>
+              <div class="newsletter-message error" id="errorMessage">
+                حدث خطأ أثناء الاشتراك، يرجى المحاولة مرة أخرى.
+              </div>
+            </form>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 جميع الحقوق محفوظة لشركة سوبر ماكس للإلكترونيات. تصميم وتطوير بواسطة فريق سوبر ماكس.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Global Variables
+  let qty = 1;
+  const unitPrice = 330000;
+  let cartItems = 0;
+  
+  // Change Main Product Image
+  function changeImage(element) {
+    document.getElementById('mainImage').src = element.src;
+    
+    // Update active thumbnail
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    element.classList.add('active');
+  }
+  
+  // Zoom Image
+  function zoomImage() {
+    const imgSrc = document.getElementById('mainImage').src;
+    window.open(imgSrc, '_blank');
+  }
+  
+  // Play Video
+  function playVideo() {
+    const videoContainer = document.querySelector('.video-container');
+    videoContainer.innerHTML = `
+      <iframe src="https://streamable.com/e/ozuhoz?autoplay=1" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe>
+    `;
+  }
+  
+  // Quantity Control
+  function changeQty(amount) {
+    qty += amount;
+    if (qty < 1) qty = 1;
+    document.getElementById('qty').textContent = qty;
+  }
+  
+  // Toggle Specifications
+  function toggleSpecs() {
+    const moreSpecs = document.getElementById('moreSpecs');
+    const specsIcon = document.getElementById('specsIcon');
+    const toggleBtn = event.currentTarget;
+    
+    moreSpecs.classList.toggle('show');
+    
+    if (moreSpecs.classList.contains('show')) {
+      specsIcon.classList.remove('fa-chevron-down');
+      specsIcon.classList.add('fa-chevron-up');
+      toggleBtn.innerHTML = '<i class="fas fa-chevron-up" id="specsIcon"></i> عرض مواصفات أقل';
+    } else {
+      specsIcon.classList.remove('fa-chevron-up');
+      specsIcon.classList.add('fa-chevron-down');
+      toggleBtn.innerHTML = '<i class="fas fa-chevron-down" id="specsIcon"></i> عرض المزيد من المواصفات';
+    }
+  }
+  
+  // Modal Functions
+  function openModal() {
+    document.getElementById('orderModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModal() {
+    document.getElementById('orderModal').classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+  
+  function openPolicy(e) {
+    e.preventDefault();
+    document.getElementById('policyModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closePolicy() {
+    document.getElementById('policyModal').classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Open WhatsApp with custom message
+  function openWhatsApp(message) {
+    const whatsappMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/9647711272744?text=${whatsappMessage}`, '_blank');
+  }
+  
+  // Open Cart
+  function openCart() {
+    if (cartItems > 0) {
+      alert(`لديك ${cartItems} منتجات في سلة التسوق`);
+    } else {
+      alert('سلة التسوق فارغة');
+    }
+  }
+  
+  // Confirm Order
+  function confirmOrder() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const province = document.getElementById('province').value.trim();
+    const address = document.getElementById('address').value.trim();
+    
+    if (!name || !phone || !province || !address) {
+      alert('الرجاء تعبئة جميع الحقول المطلوبة');
+      return;
+    }
+    
+    // Validate phone number
+    if (!/^07\d{9}$/.test(phone)) {
+      alert('يرجى إدخال رقم هاتف عراقي صحيح (يبدأ بـ 07 ويتكون من 11 رقمًا)');
+      return;
+    }
+    
+    // Update Order Summary
+    document.getElementById('summaryQty').textContent = qty;
+    const totalPrice = qty * unitPrice;
+    document.getElementById('summaryTotal').textContent = `${totalPrice.toLocaleString()} دينار`;
+    
+    // Show Summary
+    document.getElementById('orderSummary').style.display = 'block';
+    
+    // Prepare WhatsApp Message
+    const whatsappMessage = encodeURIComponent(
+      `طلب شراء جديد\n\n` +
+      `🛒 المنتج: شاشة LG 60 بوصة\n` +
+      `🔢 الكمية: ${qty}\n` +
+      `💰 السعر الإجمالي: ${totalPrice.toLocaleString()} دينار\n\n` +
+      `👤 العميل: ${name}\n` +
+      `📞 الهاتف: ${phone}\n` +
+      `📍 المحافظة: ${province}\n` +
+      `🏠 العنوان: ${address}\n\n` +
+      `شكراً لاختياركم سوبر ماكس`
+    );
+    
+    // Update WhatsApp Button
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    whatsappBtn.href = `https://wa.me/9647711272744?text=${whatsappMessage}`;
+    whatsappBtn.style.display = 'flex';
+    
+    // Update Cart Count
+    cartItems += qty;
+    document.querySelector('.cart-count').textContent = cartItems;
+    
+    // Scroll to WhatsApp Button
+    whatsappBtn.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Subscribe to Newsletter
+  function subscribeNewsletter(e) {
+    e.preventDefault();
+    const emailInput = e.target.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    
+    // Validate email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('errorMessage').style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+      return;
+    }
+    
+    // Here you would normally send the email to your server
+    // For demonstration, we'll simulate a successful subscription
+    console.log(`تم الاشتراك بنجاح على البريد: ${email}`);
+    
+    // Send to specific email (as requested)
+    if (email === 'sajad702213@gmail.com') {
+      console.log('تم إرسال تفاصيل الاشتراك إلى sajad702213@gmail.com');
+    }
+    
+    // Show success message
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('errorMessage').style.display = 'none';
+    
+    // Reset form
+    e.target.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      document.getElementById('successMessage').style.display = 'none';
+    }, 5000);
+  }
+  
+  // Close Modal When Clicking Outside
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      closeModal();
+      closePolicy();
+    }
+  }
+</script>
+
 </body>
 </html>
