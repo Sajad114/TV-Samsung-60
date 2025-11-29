@@ -16,1032 +16,248 @@
       --secondary: #27496d;
       --bg: #f8f9fa;
       --white: #ffffff;
-      --text: #333333;
-      --text-light: #666666;
-      --btn-primary: #00909e;
+      --text: #222;
+      --text-light: #6b7280;
+      --btn-primary: #007b8a;
       --btn-hover: #00a8cc;
-      --border: #e0e0e0;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
-      --radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --border: #e6e9ee;
+      --shadow: 0 6px 18px rgba(16,24,40,0.06);
+      --shadow-hover: 0 12px 28px rgba(16,24,40,0.08);
+      --radius: 14px;
+      --transition: all 0.28s cubic-bezier(.2,.9,.2,1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
     body {
       font-family: 'Tajawal', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Header Styles */
+    /* Top Bar */
     .top-bar {
-      background-color: var(--primary);
+      background: linear-gradient(90deg,var(--primary), #0f3250);
       color: white;
-      padding: 10px 0;
+      padding: 8px 0;
       font-size: 14px;
     }
-
     .top-bar-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 16px;
+      display:flex; justify-content:space-between; align-items:center;
     }
+    .contact-links { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+    .contact-links a { color:#fff; text-decoration:none; display:flex; gap:8px; align-items:center; }
+    .working-hours { display:flex; gap:8px; align-items:center; color:#dbe9f5; font-size:13px; }
 
-    .contact-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .contact-links a {
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .contact-links a:hover {
-      color: var(--accent);
-    }
-
+    /* Header */
     header {
-      background: var(--white);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+      position: sticky; top: 0; z-index: 90;
     }
-
     .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between;
     }
+    .logo { height:48px; transition:var(--transition); }
+    .logo:hover { transform:scale(1.03); }
 
-    .logo {
-      height: 50px;
-      transition: var(--transition);
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    .cart-icon {
-      position: relative;
-      font-size: 22px;
-      color: var(--primary);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .cart-icon:hover {
-      color: var(--accent);
-    }
-
+    .cart-icon { position:relative; font-size:20px; color:var(--primary); cursor:pointer; }
+    .cart-icon:hover { color:var(--accent); }
     .cart-count {
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      background-color: var(--accent);
-      color: white;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position:absolute; top:-8px; left:-8px; background:var(--accent); color:#fff; width:20px; height:20px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600;
     }
 
-    /* Main Content */
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+    /* Main container */
+    .container { max-width:1200px; margin:28px auto; padding:0 16px; }
 
-    .breadcrumb {
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: var(--text-light);
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .breadcrumb { margin-bottom:18px; font-size:14px; color:var(--text-light); display:flex; gap:8px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--btn-primary); text-decoration:none; }
+    .breadcrumb a:hover { text-decoration:underline; }
 
-    .breadcrumb a {
-      color: var(--btn-primary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
+    /* Product layout */
+    .product-container { display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start; }
+    @media (max-width: 880px) { .product-container { grid-template-columns:1fr; } }
 
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    .breadcrumb span {
-      color: var(--text-light);
-    }
-
-    .product-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .product-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Gallery Styles */
-    .gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
+    /* Gallery */
+    .gallery { display:flex; flex-direction:column; gap:14px; }
     .main-image-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      aspect-ratio: 16/9;
-      cursor: zoom-in;
-      transition: var(--transition);
+      position:relative; overflow:hidden; border-radius:12px; box-shadow:var(--shadow); aspect-ratio:16/9; background:#fafafa;
+      cursor:zoom-in; transition:var(--transition);
     }
-
-    .main-image-container:hover {
-      box-shadow: var(--shadow-hover);
-    }
-
-    .main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
+    .main-image-container:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+    .main-image { width:100%; height:100%; object-fit:cover; display:block; transition:var(--transition); }
 
     .zoom-icon {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
-      opacity: 0;
+      position:absolute; top:14px; left:14px; background:rgba(0,0,0,0.55); color:#fff; width:44px; height:44px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; opacity:0; transition:var(--transition);
     }
-
-    .main-image-container:hover .zoom-icon {
-      opacity: 1;
-    }
-
-    .zoom-icon:hover {
-      background-color: var(--btn-primary);
-      transform: scale(1.1);
-    }
+    .main-image-container:hover .zoom-icon { opacity:1; transform:scale(1.02); }
 
     .thumbnail-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px;
     }
-
     .thumbnail {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border: 2px solid transparent;
-      transition: var(--transition);
+      width:100%; border-radius:8px; cursor:pointer; aspect-ratio:1; object-fit:cover; border:2px solid transparent; transition:var(--transition);
     }
-
-    .thumbnail:hover, .thumbnail.active {
-      border-color: var(--btn-primary);
-      transform: scale(1.03);
-    }
+    .thumbnail:hover, .thumbnail.active { border-color:var(--btn-primary); transform:scale(1.03); }
 
     .video-container {
-      width: 100%;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      aspect-ratio: 16/9;
-      position: relative;
-      cursor: pointer;
-      transition: var(--transition);
+      width:100%; border-radius:12px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:16/9; position:relative; background:#000;
     }
-
-    .video-container:hover {
-      box-shadow: var(--shadow-hover);
-    }
-
-    .video-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2));
-    }
-
+    .video-cover { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.6); }
     .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 144, 158, 0.8);
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,144,158,0.85); color:#fff; width:62px; height:62px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; cursor:pointer; transition:var(--transition);
     }
+    .play-button:hover { transform:translate(-50%,-50%) scale(1.06); background:var(--btn-primary); }
 
-    .play-button:hover {
-      background-color: var(--btn-primary);
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    /* Product Info */
+    /* Product info (sticky card) */
     .product-info {
-      background: var(--white);
-      padding: 25px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 120px;
-      transition: var(--transition);
+      background:var(--white); padding:22px; border-radius:12px; box-shadow:var(--shadow); position:sticky; top:110px; transition:var(--transition);
     }
+    .product-info:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
 
-    .product-info:hover {
-      box-shadow: var(--shadow-hover);
-    }
+    .product-title { font-size:24px; font-weight:700; margin-bottom:8px; color:var(--primary); line-height:1.2; }
+    .product-subtitle { font-size:14px; color:var(--text-light); margin-bottom:12px; }
 
-    .product-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--primary);
-      line-height: 1.3;
-    }
+    .brand-logo { height:28px; margin-bottom:12px; display:block; }
 
-    .product-subtitle {
-      font-size: 16px;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
+    .rating { display:flex; align-items:center; gap:10px; margin-bottom:12px; color:#f6b019; }
+    .review-count { color:var(--text-light); font-size:13px; }
 
-    .brand-logo {
-      height: 30px;
-      margin-bottom: 15px;
-    }
+    .price-container { display:flex; gap:12px; align-items:center; margin-bottom:14px; flex-wrap:wrap; }
+    .current-price { font-size:22px; font-weight:800; color:var(--accent); }
+    .old-price { font-size:15px; color:var(--text-light); text-decoration:line-through; }
+    .badge { background:var(--accent); color:#fff; padding:6px 10px; border-radius:18px; font-weight:600; font-size:13px; }
 
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
+    .delivery-info { background:#f7fafc; padding:12px; border-radius:8px; margin:16px 0; display:flex; align-items:center; gap:10px; }
+    .delivery-info i { color:var(--btn-primary); font-size:18px; }
+    .delivery-text { font-size:14px; }
+    .delivery-text strong { color:var(--btn-primary); }
 
-    .stars {
-      color: #ffc107;
-    }
+    .specs-section { margin:18px 0; }
+    .specs-title { font-size:18px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+    .specs-list { list-style:none; padding-left:0; }
+    .specs-list li { padding:10px 0; border-bottom:1px dashed var(--border); display:flex; align-items:center; gap:10px; }
+    .spec-key { min-width:140px; color:var(--text-light); font-weight:600; }
+    .spec-value { font-weight:700; }
 
-    .review-count {
-      color: var(--text-light);
-      font-size: 14px;
-    }
-
-    .price-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .current-price {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .old-price {
-      font-size: 18px;
-      color: var(--text-light);
-      text-decoration: line-through;
-    }
-
-    .badge {
-      background-color: var(--accent);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .delivery-info {
-      background-color: #f5f5f5;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .delivery-info i {
-      color: var(--btn-primary);
-      font-size: 20px;
-    }
-
-    .delivery-text {
-      font-size: 14px;
-    }
-
-    .delivery-text strong {
-      color: var(--btn-primary);
-    }
-
-    .specs-section {
-      margin: 25px 0;
-    }
-
-    .specs-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .specs-title i {
-      color: var(--btn-primary);
-    }
-
-    .specs-list {
-      list-style: none;
-    }
-
-    .specs-list li {
-      padding: 8px 0;
-      border-bottom: 1px dashed var(--border);
-      display: flex;
-    }
-
-    .specs-list li:last-child {
-      border-bottom: none;
-    }
-
-    .spec-key {
-      font-weight: 500;
-      min-width: 120px;
-      color: var(--text-light);
-    }
-
-    .spec-value {
-      font-weight: 600;
-    }
-
-    .more-specs {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .more-specs.show {
-      max-height: 500px;
-    }
+    .more-specs { max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .more-specs.show { max-height:600px; }
 
     .toggle-specs {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--btn-primary);
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 10px;
-      padding: 5px 10px;
-      border-radius: 6px;
-      transition: var(--transition);
+      display:inline-flex; align-items:center; gap:8px; color:var(--btn-primary); background:none; border:none; font-family:inherit; font-size:15px; cursor:pointer;
+      margin-top:10px; padding:6px 10px; border-radius:8px;
     }
+    .toggle-specs:hover { background:rgba(0,144,158,0.06); }
 
-    .toggle-specs:hover {
-      background-color: rgba(0, 144, 158, 0.1);
-    }
+    .quantity-control { display:flex; align-items:center; gap:14px; margin:20px 0; }
+    .qty-btn { width:42px; height:42px; border-radius:50%; border:1px solid var(--border); background:none; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:var(--transition); }
+    .qty-btn:hover { background:var(--btn-primary); color:#fff; border-color:var(--btn-primary); }
 
-    .quantity-control {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
+    .qty-value { font-size:17px; font-weight:700; min-width:36px; text-align:center; }
 
-    .qty-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: none;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
+    .action-buttons { display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+    .btn { padding:12px 16px; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer; transition:var(--transition); border:none; display:inline-flex; align-items:center; gap:10px; justify-content:center; }
+    .btn-primary { background:var(--btn-primary); color:#fff; }
+    .btn-primary:hover { background:var(--btn-hover); transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,144,158,0.12); }
+    .btn-outline { background:none; color:var(--btn-primary); border:2px solid var(--btn-primary); }
+    .btn-outline:hover { background:rgba(0,144,158,0.06); }
 
-    .qty-btn:hover {
-      background-color: var(--btn-primary);
-      color: white;
-      border-color: var(--btn-primary);
-    }
+    .policy-link { color:var(--btn-primary); text-decoration:none; font-size:14px; display:inline-flex; align-items:center; gap:6px; margin-top:12px; }
 
-    .qty-value {
-      font-size: 18px;
-      font-weight: 600;
-      min-width: 30px;
-      text-align: center;
-    }
+    /* Modal */
+    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:110; justify-content:center; align-items:center; padding:20px; opacity:0; transition:opacity .2s ease; }
+    .modal.show { display:flex; opacity:1; }
+    .modal-content { background:var(--white); border-radius:12px; width:100%; max-width:560px; max-height:90vh; overflow:auto; box-shadow:0 12px 40px rgba(2,6,23,0.2); animation:modalIn .28s ease; }
+    @keyframes modalIn { from { transform:translateY(12px); opacity:0 } to { transform:translateY(0); opacity:1 } }
+    .modal-header { padding:18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+    .modal-title { font-size:18px; font-weight:700; color:var(--primary); }
+    .close-btn { background:none; border:none; font-size:24px; cursor:pointer; color:var(--text-light); }
+    .close-btn:hover { color:var(--accent); transform:rotate(90deg); }
 
-    .action-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+    .modal-body { padding:18px; }
+    .form-group { margin-bottom:14px; }
+    .form-label { display:block; margin-bottom:8px; font-weight:600; }
+    .form-control { width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:10px; font-size:15px; transition:var(--transition); }
+    .form-control:focus { outline:none; border-color:var(--btn-primary); box-shadow:0 6px 18px rgba(0,144,158,0.08); }
 
-    .btn {
-      padding: 14px 20px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+    .order-summary { background:#f8fafc; border-radius:8px; padding:12px; margin-top:14px; }
+    .summary-title { font-weight:800; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+    .summary-item { display:flex; justify-content:space-between; margin-bottom:8px; }
 
-    .btn-primary {
-      background-color: var(--btn-primary);
-      color: white;
-      border: none;
-    }
+    .whatsapp-btn { background:#25D366; color:#fff; text-decoration:none; margin-top:12px; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; }
+    .whatsapp-btn:hover { background:#128C7E; }
 
-    .btn-primary:hover {
-      background-color: var(--btn-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 144, 158, 0.2);
-    }
+    /* Policy list */
+    .policy-list { list-style:none; padding-left:0; }
+    .policy-list li { padding:12px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start; }
+    .policy-number { background:var(--btn-primary); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
 
-    .btn-outline {
-      background: none;
-      border: 2px solid var(--btn-primary);
-      color: var(--btn-primary);
-    }
+    /* Features */
+    .features-section { margin:40px 0; }
+    .section-title { text-align:center; font-size:24px; margin-bottom:22px; position:relative; padding-bottom:10px; }
+    .section-title::after { content:''; position:absolute; bottom:0; right:50%; transform:translateX(50%); width:80px; height:4px; background:var(--btn-primary); border-radius:2px; }
 
-    .btn-outline:hover {
-      background-color: rgba(0, 144, 158, 0.1);
-    }
+    .features-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:18px; }
+    .feature-card { background:var(--white); border-radius:12px; padding:18px; box-shadow:var(--shadow); text-align:center; transition:var(--transition); }
+    .feature-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-hover); }
+    .feature-icon { font-size:32px; color:var(--btn-primary); margin-bottom:10px; }
 
-    .policy-link {
-      color: var(--btn-primary);
-      text-decoration: none;
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 15px;
-      transition: var(--transition);
-    }
-
-    .policy-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal.show {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-content {
-      background-color: var(--white);
-      border-radius: var(--radius);
-      width: 100%;
-      max-width: 500px;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      animation: modalFadeIn 0.3s ease-out;
-    }
-
-    @keyframes modalFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .modal-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .modal-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-light);
-      transition: var(--transition);
-    }
-
-    .close-btn:hover {
-      color: var(--accent);
-      transform: rotate(90deg);
-    }
-
-    .modal-body {
-      padding: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 15px;
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--btn-primary);
-      box-shadow: 0 0 0 3px rgba(0, 144, 158, 0.2);
-    }
-
-    .order-summary {
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    .summary-title {
-      font-weight: 700;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .summary-total {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--accent);
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
-    }
-
-    .whatsapp-btn {
-      background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-
-    .whatsapp-btn:hover {
-      background-color: #128C7E;
-    }
-
-    /* Policy Modal */
-    .policy-list {
-      list-style: none;
-    }
-
-    .policy-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 10px;
-    }
-
-    .policy-list li:last-child {
-      border-bottom: none;
-    }
-
-    .policy-number {
-      background-color: var(--btn-primary);
-      color: white;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    /* Features Section */
-    .features-section {
-      margin: 50px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 30px;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 50%;
-      transform: translateX(50%);
-      width: 80px;
-      height: 3px;
-      background-color: var(--btn-primary);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      background-color: var(--white);
-      border-radius: var(--radius);
-      padding: 25px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .feature-icon {
-      font-size: 40px;
-      color: var(--btn-primary);
-      margin-bottom: 15px;
-    }
-
-    .feature-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .feature-desc {
-      color: var(--text-light);
-      font-size: 14px;
-    }
-
-    /* Image Zoom Modal */
-    .zoom-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.9);
-      z-index: 1100;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .zoom-modal.show {
-      display: flex;
-      opacity: 1;
-    }
-
-    .zoom-content {
-      max-width: 90%;
-      max-height: 90vh;
-      position: relative;
-    }
-
-    .zoomed-image {
-      max-width: 100%;
-      max-height: 90vh;
-      border-radius: 8px;
-    }
-
-    .zoom-close {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, 0.5);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-
-    .zoom-close:hover {
-      background-color: var(--accent);
-      transform: rotate(90deg);
-    }
+    /* Zoom modal (full-screen) */
+    .zoom-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:120; justify-content:center; align-items:center; opacity:0; transition:opacity .18s ease; }
+    .zoom-modal.show { display:flex; opacity:1; }
+    .zoom-content { max-width:92%; max-height:92vh; position:relative; }
+    .zoomed-image { max-width:100%; max-height:92vh; border-radius:10px; display:block; }
+    .zoom-close { position:absolute; top:12px; left:12px; color:#fff; font-size:28px; cursor:pointer; background:rgba(0,0,0,0.45); width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+    .zoom-close:hover { background:var(--accent); transform:rotate(90deg); }
 
     /* Footer */
-    .footer {
-      background-color: var(--primary);
-      color: white;
-      padding: 40px 0 20px;
+    .footer { background:var(--primary); color:#fff; padding:36px 0 22px; margin-top:28px; }
+    .footer-container { max-width:1200px; margin:0 auto; padding:0 16px; }
+    .footer-columns { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:20px; }
+    @media (max-width:768px) { .footer-columns { grid-template-columns:1fr; } }
+    .footer-column h3 { font-size:16px; font-weight:700; margin-bottom:12px; position:relative; padding-bottom:8px; }
+    .footer-column h3::after { content:''; position:absolute; bottom:0; right:0; width:50px; height:3px; background:var(--btn-primary); }
+    .contact-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; }
+    .contact-icon { color:var(--btn-primary); font-size:18px; margin-top:3px; }
+    .contact-text a { color:#fff; text-decoration:none; }
+    .social-links { display:flex; gap:12px; margin-top:8px; }
+    .social-link { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; color:#fff; transition:var(--transition); }
+    .social-link:hover { background:var(--btn-primary); transform:translateY(-4px); }
+
+    .newsletter-input { width:100%; padding:12px 14px; border-radius:8px; border:none; font-family:inherit; padding-right:40px; }
+    .newsletter-btn { position:absolute; left:10px; top:10px; background:none; border:none; color:var(--btn-primary); cursor:pointer; font-size:18px; }
+    .newsletter-form { position:relative; margin-top:12px; }
+
+    .newsletter-message { margin-top:10px; font-size:13px; display:none; }
+    .success { color:#28a745; }
+    .error { color:#dc3545; }
+
+    .copyright { text-align:center; padding-top:18px; margin-top:18px; border-top:1px solid rgba(255,255,255,0.08); font-size:13px; color:rgba(255,255,255,0.8); }
+
+    @media (max-width:576px) {
+      .top-bar-container, .header-container { padding-left:12px; padding-right:12px; }
+      .product-title { font-size:20px; }
+      .current-price { font-size:20px; }
+      .modal-content { margin:10px; }
     }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .footer-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 30px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-columns {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer-column h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .footer-column h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 50px;
-      height: 2px;
-      background-color: var(--btn-primary);
-    }
-
-    .footer-about {
-      margin-bottom: 20px;
-    }
-
-    .footer-about p {
-      margin-bottom: 15px;
-    }
-
-    .footer-contact {
-      margin-bottom: 20px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .contact-icon {
-      color: var(--btn-primary);
-      font-size: 18px;
-      margin-top: 3px;
-    }
-
-    .contact-text {
-      flex: 1;
-    }
-
-    .contact-text a {
-      color: white;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .contact-text a:hover {
-      color: var(--btn-primary);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-
-    .social-link:hover {
-      background-color: var(--btn-primary);
-      transform: translateY(-3px);
-    }
-
-    .newsletter-form {
-      margin-top: 20px;
-      position: relative;
-    }
-
-    .newsletter-input {
-      width: 100%;
-      padding: 12px 15px;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      font-family: inherit;
-      padding-right: 40px;
-    }
-
-    .newsletter-btn {
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      background: none;
-      border: none;
-      color: var(--btn-primary);
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .newsletter-message {
-      margin-top: 10px;
-      font-size: 14px;
-      display: none;
-    }
-
-    .success {
-      color: #28a745;
-    }
-
-    .error {
-      color: #dc3545;
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: 30px;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 14px;
-      color: #aaaaaa;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 576px) {
-      .top-bar-container {
-        flex-direction: column;
-        gap: 5px;
-      }
-      
-      .header-container {
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .product-title {
-        font-size: 24px;
-      }
-      
-      .current-price {
-        font-size: 24px;
-      }
-      
-      .modal-content {
-        padding: 15px;
-      }
-    }
-
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.5s ease-in;
-    }
+    /* Small utility */
+    .sr-only { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
   </style>
 </head>
 <body>
 
 <!-- Top Bar -->
-<div class="top-bar">
+<div class="top-bar" aria-hidden="false">
   <div class="top-bar-container">
-    <div class="contact-links">
+    <div class="contact-links" aria-label="contact">
       <a href="tel:07711272744">
         <i class="fas fa-phone"></i>
         07711272744
@@ -1061,56 +277,56 @@
 <!-- Header -->
 <header>
   <div class="header-container">
-    <a href="#">
+    <a href="#" aria-label="العودة للرئيسية">
       <img src="https://i.imgur.com/VuF6X8s.jpeg" alt="Super Max Logo" class="logo">
     </a>
-    <div class="cart-icon" onclick="openCart()">
+    <div class="cart-icon" onclick="openCart()" role="button" aria-label="افتح سلة التسوق" tabindex="0">
       <i class="fas fa-shopping-cart"></i>
-      <span class="cart-count">0</span>
+      <span class="cart-count" aria-live="polite">0</span>
     </div>
   </div>
 </header>
 
 <!-- Main Content -->
 <div class="container">
-  <div class="breadcrumb">
+  <div class="breadcrumb" aria-label="مسار التصفح">
     <a href="#">الرئيسية</a> <span>/</span> <a href="#">الإلكترونيات</a> <span>/</span> <a href="#">شاشات تلفزيون</a> <span>/</span> شاشة سامسونج 60 بوصة
   </div>
-  
+
   <div class="product-container">
-    <div class="gallery">
-      <div class="main-image-container" onclick="zoomImage(this)">
-        <img src="http://i.imgur.com/S8FhiYM.jpeg
-" alt="شاشة سامسونج 60 بوصة" class="main-image" id="mainImage">
-        <div class="zoom-icon">
+    <div class="gallery" aria-hidden="false">
+      <!-- Main image (fixed src newlines removed) -->
+      <div class="main-image-container" onclick="zoomImage(this)" role="button" aria-label="تكبير الصورة" tabindex="0">
+        <img src="https://i.imgur.com/S8FhiYM.jpeg" alt="شاشة سامسونج 60 بوصة" class="main-image" id="mainImage">
+        <div class="zoom-icon" aria-hidden="true">
           <i class="fas fa-search-plus"></i>
         </div>
       </div>
-      <div class="thumbnail-container">
-        <img src="http://i.imgur.com/S8FhiYM.jpeg
-" alt="شاشة سامسونج - صورة 1" class="thumbnail active" onclick="changeImage(this)">
-        <img src="http://i.imgur.com/Dk85JW3.jpeg
-" alt="شاشة سامسونج - صورة 2" class="thumbnail" onclick="changeImage(this)">
-        <img src="http://i.imgur.com/8uN1CKB.jpeg
-" alt="شاشة سامسونج - صورة 3" class="thumbnail" onclick="changeImage(this)">
-        <img src="http://i.imgur.com/V0KKH9k.jpeg
-" alt="شاشة سامسونج - صورة 4" class="thumbnail" onclick="changeImage(this)">
+
+      <!-- Thumbnails -->
+      <div class="thumbnail-container" role="list">
+        <img src="https://i.imgur.com/S8FhiYM.jpeg" alt="شاشة سامسونج - صورة 1" class="thumbnail active" onclick="changeImage(this)" role="listitem" tabindex="0">
+        <img src="https://i.imgur.com/Dk85JW3.jpeg" alt="شاشة سامسونج - صورة 2" class="thumbnail" onclick="changeImage(this)" role="listitem" tabindex="0">
+        <img src="https://i.imgur.com/8uN1CKB.jpeg" alt="شاشة سامسونج - صورة 3" class="thumbnail" onclick="changeImage(this)" role="listitem" tabindex="0">
+        <img src="https://i.imgur.com/V0KKH9k.jpeg" alt="شاشة سامسونج - صورة 4" class="thumbnail" onclick="changeImage(this)" role="listitem" tabindex="0">
       </div>
-      <div class="video-container">
-        <img src="https://streamable.com/ozuhoz?src=player-page-share" alt="فيديو شاشة سامسونج" class="main-image">
-        <div class="play-button" onclick="playVideo()">
+
+      <!-- Video (cover image then replace with iframe on click) -->
+      <div class="video-container" aria-label="فيديو المنتج">
+        <img src="https://i.imgur.com/VuF6X8s.jpeg" alt="فيديو شاشة سامسونج" class="video-cover" id="videoCover">
+        <div class="play-button" onclick="playVideo()" role="button" aria-label="تشغيل الفيديو" tabindex="0">
           <i class="fas fa-play"></i>
         </div>
       </div>
     </div>
 
-    <div class="product-info">
+    <div class="product-info" aria-labelledby="productTitle">
       <img src="" alt="" class="brand-logo" style="height: 25px;">
-      <h1 class="product-title">شاشة سامسونج 60 بوصة سمارت UHD 4K</h1>
-      <p class="product-subtitle">أحدث إصدار 2025  UHD </p>
-      
-      <div class="rating">
-        <div class="stars">
+      <h1 class="product-title" id="productTitle">شاشة سامسونج 60 بوصة سمارت UHD 4K</h1>
+      <p class="product-subtitle">أحدث إصدار 2025 — عرض 4K UHD</p>
+
+      <div class="rating" aria-label="تقييم المنتج">
+        <div class="stars" title="4.5 من 5">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -1119,49 +335,49 @@
         </div>
         <span class="review-count">(68 تقييم)</span>
       </div>
-      
-      <div class="price-container">
-        <span class="current-price">330,000 دينار عراقي</span>
+
+      <div class="price-container" aria-live="polite">
+        <span class="current-price" id="displayPrice">330,000 دينار عراقي</span>
         <span class="old-price">360,000 دينار</span>
         <span class="badge">وفر 30,000 دينار</span>
       </div>
-      
+
       <div class="delivery-info">
         <i class="fas fa-truck"></i>
         <div class="delivery-text">
           <strong>توصيل سريع</strong> إلى جميع محافظات العراق خلال 1-2 يوم عمل
         </div>
       </div>
-      
+
       <div class="specs-section">
         <h3 class="specs-title">
           <i class="fas fa-list-ul"></i>
           المواصفات الفنية
         </h3>
-        <ul class="specs-list">
+        <ul class="specs-list" aria-hidden="false">
           <li>
             <span class="spec-key">النوع:</span>
-            <span class="spec-value">سامسونج  UHD</span>
+            <span class="spec-value">سامسونج UHD</span>
           </li>
           <li>
             <span class="spec-key">نظام التشغيل:</span>
-            <span class="spec-value">اندرويد 15  </span>
+            <span class="spec-value">اندرويد 15</span>
           </li>
           <li>
             <span class="spec-key">الدقة:</span>
-            <span class="spec-value">4K UHD - 1920 × 1080</span>
+            <span class="spec-value">4K UHD - 3840 × 2160</span>
           </li>
           <li>
             <span class="spec-key">معدل التحديث:</span>
             <span class="spec-value">60Hz</span>
           </li>
         </ul>
-        
-        <div class="more-specs" id="moreSpecs">
+
+        <div class="more-specs" id="moreSpecs" aria-hidden="true">
           <ul class="specs-list">
             <li>
               <span class="spec-key">المعالج:</span>
-              <span class="spec-value">4 core@1.0GHz</span>
+              <span class="spec-value">4 core @ 1.0GHz</span>
             </li>
             <li>
               <span class="spec-key">المنافذ:</span>
@@ -1169,11 +385,11 @@
             </li>
             <li>
               <span class="spec-key">التوصيل:</span>
-              <span class="spec-value">  - واي فاي  </span>
+              <span class="spec-value">واي فاي</span>
             </li>
             <li>
               <span class="spec-key">تقنيات الصورة:</span>
-              <span class="spec-value">HDR, Dynamic  Color</span>
+              <span class="spec-value">HDR, Dynamic Color</span>
             </li>
             <li>
               <span class="spec-key">الصوت:</span>
@@ -1181,11 +397,11 @@
             </li>
             <li>
               <span class="spec-key">الضمان:</span>
-              <span class="spec-value">سنة كامله</span>
+              <span class="spec-value">سنة كاملة</span>
             </li>
             <li>
               <span class="spec-key">الأبعاد:</span>
-              <span class="spec-value">121 × 71  سم</span>
+              <span class="spec-value">121 × 71 سم</span>
             </li>
             <li>
               <span class="spec-key">الوزن:</span>
@@ -1193,22 +409,22 @@
             </li>
           </ul>
         </div>
-        
-        <button class="toggle-specs" onclick="toggleSpecs()">
+
+        <button class="toggle-specs" onclick="toggleSpecs(event)" aria-expanded="false" aria-controls="moreSpecs">
           <i class="fas fa-chevron-down" id="specsIcon"></i>
           عرض المزيد من المواصفات
         </button>
       </div>
-      
-      <div class="quantity-control">
+
+      <div class="quantity-control" aria-label="الكمية">
         <span>الكمية:</span>
-        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+        <button class="qty-btn" onclick="changeQty(-1)" aria-label="نقص الكمية">-</button>
         <span class="qty-value" id="qty">1</span>
-        <button class="qty-btn" onclick="changeQty(1)">+</button>
+        <button class="qty-btn" onclick="changeQty(1)" aria-label="زيادة الكمية">+</button>
       </div>
-      
+
       <div class="action-buttons">
-        <button class="btn btn-primary" onclick="openModal()">
+        <button class="btn btn-primary" onclick="openModal()" aria-haspopup="dialog">
           <i class="fas fa-shopping-cart"></i>
           أضف إلى السلة
         </button>
@@ -1217,46 +433,38 @@
           استفسر عبر واتساب
         </button>
       </div>
-      
+
       <a href="#" class="policy-link" onclick="openPolicy(event)">
         <i class="fas fa-file-alt"></i>
         سياسة الاسترجاع والضمان
       </a>
     </div>
   </div>
-  
+
   <!-- Product Features -->
   <div class="features-section">
     <h2 class="section-title">مميزات شاشة سامسونج 60 بوصة</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-tv"></i>
-        </div>
+        <div class="feature-icon"><i class="fas fa-tv"></i></div>
         <h3 class="feature-title">جودة صورة عالية</h3>
         <p class="feature-desc">دقة 4K UHD مع تقنية HDR+ لتجربة مشاهدة غامرة بألوان زاهية وتفاصيل دقيقة</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3 class="feature-title">نظام اندرويد  الذكي</h3>
-        <p class="feature-desc">تمتع بجميع تطبيقاتك المفضلة مثل يوتيوب ونيتفليكس مباشرة على شاشتك</p>
+        <div class="feature-icon"><i class="fas fa-robot"></i></div>
+        <h3 class="feature-title">نظام اندرويد الذكي</h3>
+        <p class="feature-desc">تمتع بجميع تطبيقاتك المفضلة مثل يوتيوب ونيتفلكس مباشرة على شاشتك</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
         <h3 class="feature-title">ضمان شامل</h3>
-        <p class="feature-desc">ضمان لمدة سنة يشمل قطع الغيار والصيانة في بغداد كرادة خارج حصراً </p>
+        <p class="feature-desc">ضمان لمدة سنة يشمل قطع الغيار والصيانة في بغداد كرادة خارج حصراً</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-headphones"></i>
-        </div>
+        <div class="feature-icon"><i class="fas fa-headphones"></i></div>
         <h3 class="feature-title">صوت سينمائي</h3>
         <p class="feature-desc">نظام صوت Dolby Digital Plus بقوة 20 واط لتجربة صوتية غامرة</p>
       </div>
@@ -1265,43 +473,40 @@
 </div>
 
 <!-- Order Modal -->
-<div class="modal" id="orderModal">
-  <div class="modal-content">
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-content" role="document">
     <div class="modal-header">
       <h3 class="modal-title">إتمام عملية الشراء</h3>
-      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <button class="close-btn" onclick="closeModal()" aria-label="إغلاق">&times;</button>
     </div>
     <div class="modal-body">
       <div class="form-group">
         <label for="name" class="form-label">الاسم الكامل</label>
         <input type="text" id="name" class="form-control" placeholder="ادخل اسمك الثلاثي">
       </div>
-      
+
       <div class="form-group">
         <label for="phone" class="form-label">رقم الهاتف</label>
         <input type="tel" id="phone" class="form-control" placeholder="07711272744">
       </div>
-      
+
       <div class="form-group">
         <label for="province" class="form-label">المحافظة</label>
         <input type="text" id="province" class="form-control" placeholder="مثال: بغداد، البصرة، إربيل">
       </div>
-      
+
       <div class="form-group">
         <label for="address" class="form-label">العنوان التفصيلي</label>
         <input type="text" id="address" class="form-control" placeholder="المنطقة، الشارع، قرب معلم مشهور">
       </div>
-      
+
       <button class="btn btn-primary" onclick="confirmOrder()">
         <i class="fas fa-check-circle"></i>
         تأكيد الطلب
       </button>
-      
-      <div class="order-summary" id="orderSummary" style="display: none;">
-        <h4 class="summary-title">
-          <i class="fas fa-receipt"></i>
-          ملخص الطلب
-        </h4>
+
+      <div class="order-summary" id="orderSummary" style="display:none;">
+        <h4 class="summary-title"><i class="fas fa-receipt"></i> ملخص الطلب</h4>
         <div class="summary-item">
           <span>المنتج:</span>
           <span>شاشة سامسونج 60 بوصة</span>
@@ -1312,14 +517,12 @@
         </div>
         <div class="summary-item">
           <span>السعر:</span>
-          <span>330,000 دينار</span>
+          <span id="summaryUnitPrice">330,000 دينار</span>
         </div>
-        <div class="summary-total" id="summaryTotal">
-          330,000 دينار
-        </div>
+        <div class="summary-total" id="summaryTotal">330,000 دينار</div>
       </div>
-      
-      <a href="#" class="btn whatsapp-btn" id="whatsappBtn" style="display: none;">
+
+      <a href="#" class="btn whatsapp-btn" id="whatsappBtn" style="display:none;" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i>
         إرسال الطلب عبر واتساب
       </a>
@@ -1328,59 +531,36 @@
 </div>
 
 <!-- Policy Modal -->
-<div class="modal" id="policyModal">
+<div class="modal" id="policyModal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal-content">
     <div class="modal-header">
       <h3 class="modal-title">سياسة الاسترجاع والضمان</h3>
-      <button class="close-btn" onclick="closePolicy()">&times;</button>
+      <button class="close-btn" onclick="closePolicy()" aria-label="إغلاق">&times;</button>
     </div>
     <div class="modal-body">
       <ul class="policy-list">
-        <li>
-          <span class="policy-number">1</span>
-          <span>يمكنك استرجاع المنتج خلال أول 3 أيام من تاريخ الشراء مع ضرورة وجود الفاتورة الأصلية</span>
-        </li>
-        <li>
-          <span class="policy-number">2</span>
-          <span>يشترط لاسترجاع المنتج وجود جميع ملحقاته بالعبوة الأصلية دون أي تلف أو خدوش</span>
-        </li>
-        <li>
-          <span class="policy-number">3</span>
-          <span>يجب أن يكون الكرتون الخارجي سليماً وغير ممزق أو مخدوش</span>
-        </li>
-        <li>
-          <span class="policy-number">4</span>
-          <span>في حالة إزالة الغلاف الأمامي للشاشة، يتم خصم مبلغ 35,000 دينار من المبلغ المسترجع</span>
-        </li>
-        <li>
-          <span class="policy-number">5</span>
-          <span>يحق للعميل استرجاع أو استبدال الشاشة بدون مبرر خلال فترة الثلاثة أيام . عند الاسترجاع يتم استقطاع اجرة توصيل المندوب من المبلغ المسترجع </span>
-        </li>
-        <li>
-          <span class="policy-number">6</span>
-          <span>الضمان يشمل قطع الغيار والصيانة لمدة سنة من تاريخ الشراء</span>
-        </li>
-        <li>
-          <span class="policy-number">7</span>
-          <span>لا يغطي الضمان الأعطال الناتجة عن سوء الاستخدام أو الكوارث الطبيعية</span>
-        </li>
-        <li>
-          <span class="policy-number">8</span>
-          <span>الضمان حصراً في بغداد كرادة خارج   </span>
-        </li>
+        <li><span class="policy-number">1</span><span>يمكنك استرجاع المنتج خلال أول 3 أيام من تاريخ الشراء مع ضرورة وجود الفاتورة الأصلية</span></li>
+        <li><span class="policy-number">2</span><span>يشترط لاسترجاع المنتج وجود جميع ملحقاته بالعبوة الأصلية دون أي تلف أو خدوش</span></li>
+        <li><span class="policy-number">3</span><span>يجب أن يكون الكرتون الخارجي سليماً وغير ممزق أو مخدوش</span></li>
+        <li><span class="policy-number">4</span><span>في حالة إزالة الغلاف الأمامي للشاشة، يتم خصم مبلغ 35,000 دينار من المبلغ المسترجع</span></li>
+        <li><span class="policy-number">5</span><span>يحق للعميل استرجاع أو استبدال الشاشة بدون مبرر خلال فترة الثلاثة أيام . عند الاسترجاع يتم استقطاع اجرة توصيل المندوب من المبلغ المسترجع </span></li>
+        <li><span class="policy-number">6</span><span>الضمان يشمل قطع الغيار والصيانة لمدة سنة من تاريخ الشراء</span></li>
+        <li><span class="policy-number">7</span><span>لا يغطي الضمان الأعطال الناتجة عن سوء الاستخدام أو الكوارث الطبيعية</span></li>
+        <li><span class="policy-number">8</span><span>الضمان حصراً في بغداد كرادة خارج</span></li>
       </ul>
     </div>
   </div>
 </div>
 
 <!-- Image Zoom Modal -->
-<div class="zoom-modal" id="zoomModal">
+<div class="zoom-modal" id="zoomModal" aria-hidden="true">
   <div class="zoom-content">
     <img src="" alt="Zoomed Image" class="zoomed-image" id="zoomedImage">
-    <div class="zoom-close" onclick="closeZoom()">&times;</div>
+    <div class="zoom-close" onclick="closeZoom()" role="button" aria-label="إغلاق التكبير">&times;</div>
   </div>
 </div>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-container">
@@ -1391,25 +571,23 @@
             <p>شركة رائدة في مجال الإلكترونيات والأجهزة المنزلية في العراق، نقدم أحدث المنتجات بأفضل الأسعار مع ضمان وجودة عالية.</p>
             <p>نحن الوكيل المعتمد للعديد من الماركات العالمية في السوق العراقي.</p>
           </div>
-          
+
           <div class="footer-contact">
             <h3>تواصل معنا</h3>
             <div class="contact-item">
               <i class="fas fa-map-marker-alt contact-icon"></i>
               <div class="contact-text">
-                <a href="https://maps.app.goo.gl/p6JMGBdnJSgTaeMk6?g_st=ic" target="_blank">
-                  الكرادة خارج، مجمع عبد الرسول، بغداد، العراق
-                </a>
+                <a href="https://maps.app.goo.gl/p6JMGBdnJSgTaeMk6?g_st=ic" target="_blank" rel="noopener">الكرادة خارج، مجمع عبد الرسول، بغداد، العراق</a>
               </div>
             </div>
-            
+
             <div class="contact-item">
               <i class="fas fa-phone contact-icon"></i>
               <div class="contact-text">
                 <a href="tel:07711272744">07711272744</a>
               </div>
             </div>
-            
+
             <div class="contact-item">
               <i class="fas fa-envelope contact-icon"></i>
               <div class="contact-text">
@@ -1418,7 +596,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="footer-column">
           <h3>ساعات العمل</h3>
           <div class="working-hours">
@@ -1426,33 +604,27 @@
             <p>11:00 صباحاً - 4:00 مساءً</p>
             <p>الجمعة: عطلة رسمية</p>
           </div>
-          
+
           <div class="newsletter">
             <h3>النشرة البريدية</h3>
             <p>اشترك ليصلك كل جديد عن عروضنا و منتجاتنا</p>
             <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
               <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني" required>
-              <button type="submit" class="newsletter-btn">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-              <div class="newsletter-message success" id="successMessage">
-                شكراً للاشتراك! سيصلك كل جديد على بريدك الإلكتروني.
-              </div>
-              <div class="newsletter-message error" id="errorMessage">
-                حدث خطأ أثناء الاشتراك، يرجى المحاولة مرة أخرى.
-              </div>
+              <button type="submit" class="newsletter-btn" aria-label="أرسل"><i class="fas fa-paper-plane"></i></button>
+              <div class="newsletter-message success" id="successMessage">شكراً للاشتراك! سيصلك كل جديد على بريدك الإلكتروني.</div>
+              <div class="newsletter-message error" id="errorMessage">حدث خطأ أثناء الاشتراك، يرجى المحاولة مرة أخرى.</div>
             </form>
           </div>
-          
+
           <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=100054243770819&mibextid=wwXIfr&mibextid=wwXIfr" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/supermax_supermax?igsh=aTRrZGxseHcxemZ4" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="لا يوجد" class="social-link"><i class="fab fa-telegram"></i></a>
-            <a href="https://youtube.com/@supermax1854?si=aNbjug355vrpma9s" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100054243770819&mibextid=wwXIfr&mibextid=wwXIfr" class="social-link" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/supermax_supermax?igsh=aTRrZGxseHcxemZ4" class="social-link" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="https://youtube.com/@supermax1854?si=aNbjug355vrpma9s" class="social-link" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
       </div>
-      
+
       <div class="copyright">
         &copy; 2025 جميع الحقوق محفوظة لشركة سوبر ماكس للإلكترونيات. تصميم وتطوير بواسطة فريق سوبر ماكس.
       </div>
@@ -1461,105 +633,141 @@
 </footer>
 
 <script>
-  // Global Variables
+  // ====== Global state ======
   let qty = 1;
-  const unitPrice = 340000;
+  // Use one source of truth for unit price (matching displayed price)
+  const unitPrice = 330000; // دينار عراقي
   let cartItems = 0;
-  
-  // Change Main Product Image
+
+  // Accessibility helpers
+  function trapBodyScroll(shouldTrap) {
+    document.body.style.overflow = shouldTrap ? 'hidden' : 'auto';
+  }
+
+  // ====== Change Main Product Image ======
   function changeImage(element) {
     const mainImage = document.getElementById('mainImage');
+    if (!element || !element.src) return;
     mainImage.src = element.src;
     mainImage.classList.add('fade-in');
-    
-    // Remove fade-in class after animation completes
-    setTimeout(() => {
-      mainImage.classList.remove('fade-in');
-    }, 500);
-    
-    // Update active thumbnail
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+    // Update thumbnails active state
+    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
     element.classList.add('active');
+
+    // remove the animation class after it's done
+    setTimeout(() => mainImage.classList.remove('fade-in'), 450);
   }
-  
-  // Zoom Image
+
+  // ====== Zoom Image ======
   function zoomImage(element) {
-    const imgSrc = element.querySelector('img').src;
-    document.getElementById('zoomedImage').src = imgSrc;
-    document.getElementById('zoomModal').classList.add('show');
-    document.body.style.overflow = 'hidden';
+    try {
+      const img = element.querySelector('img');
+      const src = img ? img.src : document.getElementById('mainImage').src;
+      const zoomModal = document.getElementById('zoomModal');
+      document.getElementById('zoomedImage').src = src;
+      zoomModal.classList.add('show');
+      zoomModal.setAttribute('aria-hidden','false');
+      trapBodyScroll(true);
+      // focus close button for keyboard users
+      setTimeout(()=> document.querySelector('.zoom-close').focus(), 100);
+    } catch(e) {
+      console.error('zoomImage error', e);
+    }
   }
-  
-  // Close Zoom
+
   function closeZoom() {
-    document.getElementById('zoomModal').classList.remove('show');
-    document.body.style.overflow = 'auto';
+    const zoomModal = document.getElementById('zoomModal');
+    zoomModal.classList.remove('show');
+    zoomModal.setAttribute('aria-hidden','true');
+    trapBodyScroll(false);
   }
-  
-  // Play Video
+
+  // ====== Play Video ======
   function playVideo() {
     const videoContainer = document.querySelector('.video-container');
-    videoContainer.innerHTML = `
-      <iframe src="https://streamable.com/ozuhoz?t=0&src=player-page-share" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe>
-    `;
+    // Replace cover with responsive iframe
+    const iframe = document.createElement('iframe');
+    // streamable embed url (no autoplay to avoid annoyance); user can press play inside iframe
+    iframe.src = 'https://streamable.com/o/ozuhoz'; // streamable short share (if not allowed, will fallback)
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.frameBorder = '0';
+    iframe.loading = 'lazy';
+    // Clear contents
+    videoContainer.innerHTML = '';
+    videoContainer.appendChild(iframe);
   }
-  
-  // Quantity Control
+
+  // ====== Quantity control ======
   function changeQty(amount) {
-    qty += amount;
+    qty = Number(qty) + Number(amount);
     if (qty < 1) qty = 1;
     document.getElementById('qty').textContent = qty;
   }
-  
-  // Toggle Specifications
-  function toggleSpecs() {
+
+  // ====== Toggle extra specs ======
+  function toggleSpecs(event) {
     const moreSpecs = document.getElementById('moreSpecs');
     const specsIcon = document.getElementById('specsIcon');
     const toggleBtn = event.currentTarget;
-    
-    moreSpecs.classList.toggle('show');
-    
-    if (moreSpecs.classList.contains('show')) {
+
+    if (!moreSpecs.classList.contains('show')) {
+      moreSpecs.classList.add('show');
       specsIcon.classList.remove('fa-chevron-down');
       specsIcon.classList.add('fa-chevron-up');
+      toggleBtn.setAttribute('aria-expanded','true');
       toggleBtn.innerHTML = '<i class="fas fa-chevron-up" id="specsIcon"></i> عرض مواصفات أقل';
     } else {
+      moreSpecs.classList.remove('show');
       specsIcon.classList.remove('fa-chevron-up');
       specsIcon.classList.add('fa-chevron-down');
+      toggleBtn.setAttribute('aria-expanded','false');
       toggleBtn.innerHTML = '<i class="fas fa-chevron-down" id="specsIcon"></i> عرض المزيد من المواصفات';
     }
   }
-  
-  // Modal Functions
+
+  // ====== Modal functions ======
   function openModal() {
-    document.getElementById('orderModal').classList.add('show');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('orderModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    trapBodyScroll(true);
+    // focus first input
+    setTimeout(()=> document.getElementById('name').focus(), 120);
   }
-  
+
   function closeModal() {
-    document.getElementById('orderModal').classList.remove('show');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('orderModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    trapBodyScroll(false);
   }
-  
+
   function openPolicy(e) {
     e.preventDefault();
-    document.getElementById('policyModal').classList.add('show');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('policyModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    trapBodyScroll(true);
   }
-  
+
   function closePolicy() {
-    document.getElementById('policyModal').classList.remove('show');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('policyModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    trapBodyScroll(false);
   }
-  
-  // Open WhatsApp with custom message
+
+  // ====== WhatsApp helper ======
   function openWhatsApp(message) {
     const whatsappMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/9647711272744?text=${whatsappMessage}`, '_blank');
+    // Use international format +964...
+    window.open(`https://wa.me/9647711272744?text=${whatsappMessage}`, '_blank', 'noopener');
   }
-  
-  // Open Cart
+
+  // ====== Open Cart ======
   function openCart() {
     if (cartItems > 0) {
       alert(`لديك ${cartItems} منتجات في سلة التسوق`);
@@ -1567,34 +775,34 @@
       alert('سلة التسوق فارغة');
     }
   }
-  
-  // Confirm Order
+
+  // ====== Confirm Order (build WhatsApp link, validation) ======
   function confirmOrder() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const province = document.getElementById('province').value.trim();
     const address = document.getElementById('address').value.trim();
-    
+
     if (!name || !phone || !province || !address) {
       alert('الرجاء تعبئة جميع الحقول المطلوبة');
       return;
     }
-    
-    // Validate phone number
+
+    // Iraqi phone validation: starts with 07 and 11 digits total
     if (!/^07\d{9}$/.test(phone)) {
       alert('يرجى إدخال رقم هاتف عراقي صحيح (يبدأ بـ 07 ويتكون من 11 رقمًا)');
       return;
     }
-    
-    // Update Order Summary
+
+    // Update summary values
     document.getElementById('summaryQty').textContent = qty;
     const totalPrice = qty * unitPrice;
     document.getElementById('summaryTotal').textContent = `${totalPrice.toLocaleString()} دينار`;
-    
-    // Show Summary
+    document.getElementById('summaryUnitPrice').textContent = `${unitPrice.toLocaleString()} دينار`;
+
     document.getElementById('orderSummary').style.display = 'block';
-    
-    // Prepare WhatsApp Message
+
+    // Prepare WhatsApp message (UTF-8 encoded)
     const whatsappMessage = encodeURIComponent(
       `طلب شراء جديد\n\n` +
       `🛒 المنتج: شاشة سامسونج 60 بوصة\n` +
@@ -1606,63 +814,81 @@
       `🏠 العنوان: ${address}\n\n` +
       `شكراً لاختياركم سوبر ماكس`
     );
-    
-    // Update WhatsApp Button
+
     const whatsappBtn = document.getElementById('whatsappBtn');
     whatsappBtn.href = `https://wa.me/9647711272744?text=${whatsappMessage}`;
-    whatsappBtn.style.display = 'flex';
-    
-    // Update Cart Count
+    whatsappBtn.style.display = 'inline-flex';
+
+    // Update cart count
     cartItems += qty;
     document.querySelector('.cart-count').textContent = cartItems;
-    
-    // Scroll to WhatsApp Button
-    whatsappBtn.scrollIntoView({ behavior: 'smooth' });
+
+    // scroll whatsapp button into view within modal
+    whatsappBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-  
-  // Subscribe to Newsletter
+
+  // ====== Newsletter subscribe (demo) ======
   function subscribeNewsletter(e) {
     e.preventDefault();
     const emailInput = e.target.querySelector('input[type="email"]');
     const email = emailInput.value.trim();
-    
-    // Validate email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       document.getElementById('errorMessage').style.display = 'block';
       document.getElementById('successMessage').style.display = 'none';
       return;
     }
-    
-    // Here you would normally send the email to your server
-    // For demonstration, we'll simulate a successful subscription
+
+    // Simulate subscription (in real site: send to server)
     console.log(`تم الاشتراك بنجاح على البريد: ${email}`);
-    
-    // Send to specific email (as requested)
     if (email === 'sajad702213@gmail.com') {
       console.log('تم إرسال تفاصيل الاشتراك إلى sajad702213@gmail.com');
     }
-    
-    // Show success message
+
     document.getElementById('successMessage').style.display = 'block';
     document.getElementById('errorMessage').style.display = 'none';
-    
-    // Reset form
     e.target.reset();
-    
-    // Hide message after 5 seconds
-    setTimeout(() => {
-      document.getElementById('successMessage').style.display = 'none';
-    }, 5000);
+
+    setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
   }
-  
-  // Close Modal When Clicking Outside
-  window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-      closeModal();
-      closePolicy();
-      closeZoom();
+
+  // ====== Global click handler to close modals when click outside content ======
+  window.addEventListener('click', function(event) {
+    // close if clicked on overlay for order or policy or zoom modals
+    const orderModal = document.getElementById('orderModal');
+    const policyModal = document.getElementById('policyModal');
+    const zoomModal = document.getElementById('zoomModal');
+
+    if (event.target === orderModal) closeModal();
+    if (event.target === policyModal) closePolicy();
+    if (event.target === zoomModal) closeZoom();
+  });
+
+  // ====== Close modals with Escape key ======
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      const orderModal = document.getElementById('orderModal');
+      const policyModal = document.getElementById('policyModal');
+      const zoomModal = document.getElementById('zoomModal');
+      if (orderModal.classList.contains('show')) closeModal();
+      if (policyModal.classList.contains('show')) closePolicy();
+      if (zoomModal.classList.contains('show')) closeZoom();
     }
-  }
+  });
+
+  // ====== Small enhancement: keyboard support for thumbnails and logo cart ======
+  document.querySelectorAll('.thumbnail').forEach(el => {
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); changeImage(el); } });
+  });
+  document.querySelectorAll('[role="button"]').forEach(btn => {
+    btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
+  });
+
+  // ====== helpful: ensure displayed price uses unitPrice constant on load ======
+  document.addEventListener('DOMContentLoaded', function() {
+    const display = document.getElementById('displayPrice');
+    if (display) display.textContent = `${unitPrice.toLocaleString()} دينار عراقي`;
+  });
+
 </script>
 
 </body>
