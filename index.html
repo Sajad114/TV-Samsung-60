@@ -9,140 +9,419 @@
 <script src="https://unpkg.com/html5-qrcode"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap');
-*{box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap');
 
-body{
-    margin:0;
-    font-family:'Tajawal',sans-serif;
-    background:linear-gradient(135deg,#050505,#111);
-    color:#fff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header{
-    text-align:center;
-    padding:15px;
-    font-size:22px;
-    font-weight:700;
-    background:rgba(255,255,255,.05);
-    border-bottom:1px solid rgba(255,255,255,.1);
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #0a1929, #1a1a2e);
+    color: #fff;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:15px;
+/* Header */
+.header {
+    background: linear-gradient(90deg, #00b894, #00a085);
+    padding: 1.2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.card{
-    background:rgba(255,255,255,.06);
-    border-radius:16px;
-    padding:15px;
-    margin-bottom:15px;
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
 }
 
-h2{
-    margin:0 0 10px;
-    font-size:16px;
-    color:#00ff99;
+.header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 300;
 }
 
-input,select,button{
-    width:100%;
-    padding:11px;
-    margin-top:6px;
-    border:none;
-    border-radius:10px;
-    font-size:15px;
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem;
 }
 
-input,select{background:#111;color:#fff}
-
-button{
-    background:#00ff99;
-    color:#000;
-    font-weight:700;
-    cursor:pointer;
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-button.stop,button.del{background:#ff4444;color:#fff}
-
-.controls{display:flex;gap:10px}
-
-#scanner{
-    max-width:320px;
-    margin:auto;
-    display:none;
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
+.card-title {
+    color: #00ff99;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-th,td{
-    padding:10px;
-    border-bottom:1px solid #333;
-    text-align:center;
+.card-title i {
+    font-size: 1.3rem;
 }
 
-th{color:#00ff99}
+/* Form Elements */
+.input-group {
+    margin-bottom: 1rem;
+}
 
-.search-result{
-    background:#111;
-    padding:10px;
-    border-radius:10px;
-    margin-top:6px;
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.3s ease;
+}
+
+input, select {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #00ff99;
+    box-shadow: 0 0 0 2px rgba(0, 255, 153, 0.2);
+}
+
+/* Buttons */
+.btn {
+    background: linear-gradient(90deg, #00ff99, #00cc7a);
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 255, 153, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-stop {
+    background: linear-gradient(90deg, #ff4444, #cc0000);
+    color: white;
+}
+
+.btn-del {
+    background: linear-gradient(90deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, #4dabf7, #339af0);
+    color: white;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* Scanner */
+#scanner {
+    max-width: 400px;
+    margin: 1.5rem auto 0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: none;
+    border: 3px solid #00ff99;
+    box-shadow: 0 0 25px rgba(0, 255, 153, 0.3);
+}
+
+.scanner-info {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Search */
+.search-container {
+    position: relative;
+}
+
+#searchResult {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    border-right: 4px solid #00ff99;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-found {
+    color: #00ff99;
+    font-weight: 600;
+}
+
+.result-not-found {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+th {
+    background: rgba(0, 255, 153, 0.2);
+    color: #00ff99;
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #00ff99;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        padding: 1.2rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    th, td {
+        padding: 0.8rem 0.5rem;
+    }
 }
 </style>
 </head>
 <body>
 
-<header>📦 نظام أرشفة الباركود (Firebase)</header>
+<header class="header">
+    <h1>📦 نظام أرشفة الباركود (Firebase)</h1>
+    <p>مسح ضوئي وتخزين وإدارة أكواد QR و Barcode</p>
+</header>
 
 <div class="container">
 
-<div class="card">
-<h2>➕ إنشاء أرشيف</h2>
-<input id="newArchive" placeholder="اسم الأرشيف">
-<button id="addArchiveBtn">إنشاء</button>
+    <!-- Create Archive -->
+    <div class="card">
+        <h2 class="card-title">➕ إنشاء أرشيف جديد</h2>
+        <div class="input-group">
+            <input id="newArchive" placeholder="أدخل اسم الأرشيف الجديد" autocomplete="off">
+        </div>
+        <button id="addArchiveBtn" class="btn">إنشاء الأرشيف</button>
+    </div>
+
+    <!-- Select Archive -->
+    <div class="card">
+        <h2 class="card-title">🗂 الأرشيف النشط</h2>
+        <div class="input-group">
+            <select id="archiveSelect">
+                <option value="" disabled selected>اختر الأرشيف</option>
+            </select>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="archiveCount">0</div>
+                <div class="stat-label">الأرشيفات</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="codeCount">0</div>
+                <div class="stat-label">الأكواد</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="lastScan">-</div>
+                <div class="stat-label">آخر مسح</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanner -->
+    <div class="card">
+        <h2 class="card-title">📷 الماسح الضوئي</h2>
+        <div class="controls">
+            <button id="startCam" class="btn pulse">تشغيل الكاميرا</button>
+            <button class="btn btn-stop" id="stopCam">إيقاف الكاميرا</button>
+        </div>
+        <div id="scanner"></div>
+        <div class="scanner-info">
+            <p>يتم حفظ الأكواد تلقائيًا عند المسح. تأكد من اختيار الأرشيف أولاً.</p>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="card">
+        <h2 class="card-title">🔍 بحث سريع</h2>
+        <div class="input-group">
+            <input id="searchInput" inputmode="numeric" maxlength="6" placeholder="أدخل 6 أرقام للبحث (رقم الوصل)">
+        </div>
+        <div id="searchResult" class="search-result"></div>
+    </div>
+
+    <!-- Codes List -->
+    <div class="card">
+        <h2 class="card-title">📄 الأكواد المخزنة</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="70%">الكود</th>
+                        <th width="30%">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                    <tr>
+                        <td colspan="2" class="loading">لم يتم تحميل البيانات بعد...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="controls" style="margin-top: 1rem;">
+            <button class="btn btn-secondary" id="exportBtn">تصدير القائمة</button>
+            <button class="btn btn-stop" id="clearBtn">حذف جميع الأكواد</button>
+        </div>
+    </div>
+
 </div>
 
-<div class="card">
-<h2>🗂 اختيار الأرشيف</h2>
-<select id="archiveSelect"></select>
-</div>
-
-<div class="card">
-<h2>📷 الكاميرا</h2>
-<div class="controls">
-<button id="startCam">تشغيل</button>
-<button class="stop" id="stopCam">إيقاف</button>
-</div>
-<div id="scanner"></div>
-</div>
-
-<div class="card">
-<h2>🔍 البحث (6 أرقام)</h2>
-<input id="searchInput" inputmode="numeric" maxlength="6" placeholder="رقم الوصل">
-<div id="searchResult" class="search-result"></div>
-</div>
-
-<div class="card">
-<h2>📄 الأكواد</h2>
-<table>
-<thead>
-<tr><th>الكود</th><th>حذف</th></tr>
-</thead>
-<tbody id="list"></tbody>
-</table>
-</div>
-
-</div>
+<footer class="footer">
+    <p>تم التطوير باستخدام Firebase | نظام أرشفة الباركود &copy; 2023</p>
+</footer>
 
 <audio id="beep" preload="auto">
-<source src="https://assets.mixkit.co/sfx/preview/mixkit-classic-click-1117.mp3">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-classic-click-1117.mp3">
 </audio>
 
 <!-- 🔥 Firebase ES Module -->
@@ -152,10 +431,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
 import {
   getFirestore, collection, doc, getDoc, getDocs,
-  setDoc, updateDoc
+  setDoc, updateDoc, deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* ================= FIREBASE CONFIG (مالتك) ================= */
+/* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
   apiKey: "AIzaSyCGCX07TI3q2nCCPj_x7t_qZH7WJaiIOOI",
   authDomain: "fatoraqr.firebaseapp.com",
@@ -177,114 +456,336 @@ const list = document.getElementById("list");
 const searchInput = document.getElementById("searchInput");
 const searchResult = document.getElementById("searchResult");
 const beep = document.getElementById("beep");
+const archiveCount = document.getElementById("archiveCount");
+const codeCount = document.getElementById("codeCount");
+const lastScan = document.getElementById("lastScan");
 
 /* ================= LOAD ARCHIVES ================= */
-async function loadArchives(){
-    select.innerHTML="";
-    const snap = await getDocs(collection(db,"archives"));
-    snap.forEach(d=>{
-        const o=document.createElement("option");
-        o.value=d.id;
-        o.textContent=d.id;
-        select.appendChild(o);
-    });
-    if(select.value) loadCodes();
+async function loadArchives() {
+    select.innerHTML = '<option value="" disabled selected>جاري التحميل...</option>';
+    try {
+        const snap = await getDocs(collection(db, "archives"));
+        select.innerHTML = '<option value="" disabled selected>اختر الأرشيف</option>';
+        
+        let count = 0;
+        snap.forEach(d => {
+            const o = document.createElement("option");
+            o.value = d.id;
+            o.textContent = d.id;
+            select.appendChild(o);
+            count++;
+        });
+        
+        archiveCount.textContent = count;
+        
+        if (select.value) loadCodes();
+    } catch (error) {
+        console.error("خطأ في تحميل الأرشيفات:", error);
+        select.innerHTML = '<option value="" disabled selected>خطأ في التحميل</option>';
+    }
 }
 
 /* ================= LOAD CODES ================= */
-async function loadCodes(){
-    list.innerHTML="";
-    const ref = doc(db,"archives",select.value);
-    const snap = await getDoc(ref);
-    if(!snap.exists()) return;
-    snap.data().codes.forEach((c,i)=>{
-        list.innerHTML+=`
-        <tr>
-          <td>${c}</td>
-          <td><button class="del" onclick="deleteCode(${i})">حذف</button></td>
-        </tr>`;
-    });
+async function loadCodes() {
+    list.innerHTML = '<tr><td colspan="2" class="loading">جاري تحميل البيانات...</td></tr>';
+    
+    if (!select.value) {
+        list.innerHTML = '<tr><td colspan="2" class="loading">الرجاء اختيار الأرشيف أولاً</td></tr>';
+        codeCount.textContent = "0";
+        return;
+    }
+    
+    try {
+        const ref = doc(db, "archives", select.value);
+        const snap = await getDoc(ref);
+        
+        if (!snap.exists()) {
+            list.innerHTML = '<tr><td colspan="2" class="loading">لا توجد أكواد في الأرشيف</td></tr>';
+            codeCount.textContent = "0";
+            return;
+        }
+        
+        const codes = snap.data().codes || [];
+        codeCount.textContent = codes.length;
+        
+        if (codes.length === 0) {
+            list.innerHTML = '<tr><td colspan="2" class="loading">لا توجد أكواد في الأرشيف</td></tr>';
+            return;
+        }
+        
+        list.innerHTML = "";
+        codes.forEach((c, i) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td dir="ltr">${c}</td>
+                <td><button class="btn-del" onclick="deleteCode(${i})">حذف</button></td>
+            `;
+            list.appendChild(tr);
+        });
+    } catch (error) {
+        console.error("خطأ في تحميل الأكواد:", error);
+        list.innerHTML = '<tr><td colspan="2" class="loading">حدث خطأ في التحميل</td></tr>';
+    }
 }
 
 /* ================= ADD ARCHIVE ================= */
-document.getElementById("addArchiveBtn").onclick = async ()=>{
-    const name=document.getElementById("newArchive").value.trim();
-    if(!name) return;
-    await setDoc(doc(db,"archives",name),{codes:[]});
-    document.getElementById("newArchive").value="";
-    loadArchives();
+document.getElementById("addArchiveBtn").onclick = async () => {
+    const name = document.getElementById("newArchive").value.trim();
+    if (!name) {
+        alert("الرجاء إدخال اسم الأرشيف");
+        return;
+    }
+    
+    try {
+        await setDoc(doc(db, "archives", name), { codes: [], createdAt: new Date().toISOString() });
+        document.getElementById("newArchive").value = "";
+        await loadArchives();
+        select.value = name;
+        loadCodes();
+        
+        // Show success message
+        searchResult.innerHTML = `<div class="result-found">✅ تم إنشاء الأرشيف "${name}" بنجاح</div>`;
+        setTimeout(() => {
+            if (searchInput.value.length < 6) searchResult.innerHTML = "";
+        }, 3000);
+    } catch (error) {
+        console.error("خطأ في إنشاء الأرشيف:", error);
+        alert("حدث خطأ في إنشاء الأرشيف");
+    }
 };
 
-select.onchange=loadCodes;
+select.onchange = loadCodes;
 
-/* ================= DELETE ================= */
-window.deleteCode = async (i)=>{
-    const ref = doc(db,"archives",select.value);
-    const snap = await getDoc(ref);
-    const arr = snap.data().codes;
-    arr.splice(i,1);
-    await updateDoc(ref,{codes:arr});
-    loadCodes();
+/* ================= DELETE CODE ================= */
+window.deleteCode = async (i) => {
+    if (!confirm("هل أنت متأكد من حذف هذا الكود؟")) return;
+    
+    try {
+        const ref = doc(db, "archives", select.value);
+        const snap = await getDoc(ref);
+        const arr = snap.data().codes;
+        arr.splice(i, 1);
+        await updateDoc(ref, { codes: arr });
+        loadCodes();
+        
+        // Show success message
+        searchResult.innerHTML = `<div class="result-found">✅ تم حذف الكود بنجاح</div>`;
+        setTimeout(() => {
+            if (searchInput.value.length < 6) searchResult.innerHTML = "";
+        }, 3000);
+    } catch (error) {
+        console.error("خطأ في حذف الكود:", error);
+        alert("حدث خطأ في حذف الكود");
+    }
+};
+
+/* ================= CLEAR ALL CODES ================= */
+document.getElementById("clearBtn").onclick = async () => {
+    if (!select.value) {
+        alert("الرجاء اختيار الأرشيف أولاً");
+        return;
+    }
+    
+    if (!confirm("هل أنت متأكد من حذف جميع الأكواد في الأرشيف؟ لا يمكن التراجع عن هذا الإجراء.")) return;
+    
+    try {
+        const ref = doc(db, "archives", select.value);
+        await updateDoc(ref, { codes: [] });
+        loadCodes();
+        
+        // Show success message
+        searchResult.innerHTML = `<div class="result-found">✅ تم حذف جميع الأكواد بنجاح</div>`;
+        setTimeout(() => {
+            if (searchInput.value.length < 6) searchResult.innerHTML = "";
+        }, 3000);
+    } catch (error) {
+        console.error("خطأ في حذف الأكواد:", error);
+        alert("حدث خطأ في حذف الأكواد");
+    }
+};
+
+/* ================= EXPORT CODES ================= */
+document.getElementById("exportBtn").onclick = async () => {
+    if (!select.value) {
+        alert("الرجاء اختيار الأرشيف أولاً");
+        return;
+    }
+    
+    try {
+        const ref = doc(db, "archives", select.value);
+        const snap = await getDoc(ref);
+        
+        if (!snap.exists() || !snap.data().codes || snap.data().codes.length === 0) {
+            alert("لا توجد أكواد لتصديرها");
+            return;
+        }
+        
+        const codes = snap.data().codes;
+        const content = codes.join("\n");
+        const blob = new Blob([content], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${select.value}_codes_${new Date().toISOString().slice(0,10)}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        // Show success message
+        searchResult.innerHTML = `<div class="result-found">✅ تم تصدير ${codes.length} كود بنجاح</div>`;
+        setTimeout(() => {
+            if (searchInput.value.length < 6) searchResult.innerHTML = "";
+        }, 3000);
+    } catch (error) {
+        console.error("خطأ في تصدير الأكواد:", error);
+        alert("حدث خطأ في تصدير الأكواد");
+    }
 };
 
 /* ================= SEARCH ================= */
-searchInput.oninput = async ()=>{
-    searchInput.value = searchInput.value.replace(/\D/g,"").slice(0,6);
-    if(searchInput.value.length<6){
-        searchResult.innerHTML="";
+searchInput.oninput = async () => {
+    searchInput.value = searchInput.value.replace(/\D/g, "").slice(0, 6);
+    
+    if (searchInput.value.length < 6) {
+        searchResult.innerHTML = "";
         return;
     }
 
-    const snap = await getDocs(collection(db,"archives"));
-    let found=[];
-    snap.forEach(d=>{
-        if(d.data().codes.includes(searchInput.value)){
-            found.push(d.id);
+    try {
+        const snap = await getDocs(collection(db, "archives"));
+        let found = [];
+        snap.forEach(d => {
+            if (d.data().codes && d.data().codes.includes(searchInput.value)) {
+                found.push(d.id);
+            }
+        });
+        
+        if (found.length > 0) {
+            searchResult.innerHTML = `<div class="result-found">✅ الكود ${searchInput.value} موجود في: ${found.join(" , ")}</div>`;
+        } else {
+            searchResult.innerHTML = `<div class="result-not-found">❌ الكود ${searchInput.value} غير موجود في أي أرشيف</div>`;
         }
-    });
-    searchResult.innerHTML = found.length
-      ? `✅ موجود في: ${found.join(" , ")}`
-      : "❌ غير موجود";
+    } catch (error) {
+        console.error("خطأ في البحث:", error);
+        searchResult.innerHTML = `<div class="result-not-found">❌ حدث خطأ في البحث</div>`;
+    }
 };
 
 /* ================= CAMERA ================= */
-let qr=null,running=false,last="",time=0;
+let qr = null, running = false, lastCode = "", lastScanTime = 0;
 
-document.getElementById("startCam").onclick = async ()=>{
-    if(running) return;
-    qr=new Html5Qrcode("scanner");
-    document.getElementById("scanner").style.display="block";
-    const cams=await Html5Qrcode.getCameras();
-    const cam=cams.find(c=>c.label.toLowerCase().includes("back"))||cams[0];
-
-    await qr.start(cam.id,{fps:15,qrbox:230},async txt=>{
-        const now=Date.now();
-        if(txt===last && now-time<1500) return;
-        last=txt; time=now;
-
-        const ref=doc(db,"archives",select.value);
-        const snap=await getDoc(ref);
-        const arr=snap.data().codes;
-        if(!arr.includes(txt)){
-            arr.push(txt);
-            await updateDoc(ref,{codes:arr});
-            beep.currentTime=0;
-            beep.play();
-            loadCodes();
+document.getElementById("startCam").onclick = async () => {
+    if (running) return;
+    
+    if (!select.value) {
+        alert("الرجاء اختيار الأرشيف أولاً");
+        return;
+    }
+    
+    try {
+        qr = new Html5Qrcode("scanner");
+        document.getElementById("scanner").style.display = "block";
+        const cams = await Html5Qrcode.getCameras();
+        
+        if (cams.length === 0) {
+            alert("لا توجد كاميرا متاحة");
+            return;
         }
-    });
-    running=true;
+        
+        // Try to find back camera, otherwise use first available
+        const backCam = cams.find(c => c.label.toLowerCase().includes("back"));
+        const cam = backCam || cams[0];
+
+        await qr.start(cam.id, { fps: 15, qrbox: 250 }, async txt => {
+            const now = Date.now();
+            
+            // Prevent duplicate scans within 1.5 seconds
+            if (txt === lastCode && now - lastScanTime < 1500) return;
+            
+            lastCode = txt;
+            lastScanTime = now;
+            
+            try {
+                const ref = doc(db, "archives", select.value);
+                const snap = await getDoc(ref);
+                const arr = snap.data().codes || [];
+                
+                if (!arr.includes(txt)) {
+                    arr.push(txt);
+                    await updateDoc(ref, { codes: arr });
+                    
+                    // Update last scan time
+                    const timeStr = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                    lastScan.textContent = timeStr;
+                    
+                    // Play sound and reload
+                    beep.currentTime = 0;
+                    beep.play().catch(e => console.log("لا يمكن تشغيل الصوت:", e));
+                    
+                    loadCodes();
+                    
+                    // Show success message
+                    searchResult.innerHTML = `<div class="result-found">✅ تم حفظ الكود: ${txt}</div>`;
+                    setTimeout(() => {
+                        if (searchInput.value.length < 6) searchResult.innerHTML = "";
+                    }, 2000);
+                } else {
+                    searchResult.innerHTML = `<div class="result-not-found">⚠️ الكود ${txt} موجود مسبقاً</div>`;
+                    setTimeout(() => {
+                        if (searchInput.value.length < 6) searchResult.innerHTML = "";
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error("خطأ في حفظ الكود:", error);
+                searchResult.innerHTML = `<div class="result-not-found">❌ خطأ في حفظ الكود</div>`;
+            }
+        });
+        
+        running = true;
+        document.getElementById("startCam").textContent = "الكاميرا شغالة";
+        document.getElementById("startCam").classList.remove("pulse");
+    } catch (error) {
+        console.error("خطأ في تشغيل الكاميرا:", error);
+        alert("حدث خطأ في تشغيل الكاميرا");
+    }
 };
 
-document.getElementById("stopCam").onclick = async ()=>{
-    if(!running) return;
-    await qr.stop(); qr.clear();
-    document.getElementById("scanner").style.display="none";
-    running=false;
+document.getElementById("stopCam").onclick = async () => {
+    if (!running) return;
+    
+    try {
+        await qr.stop();
+        qr.clear();
+        document.getElementById("scanner").style.display = "none";
+        running = false;
+        document.getElementById("startCam").textContent = "تشغيل الكاميرا";
+        document.getElementById("startCam").classList.add("pulse");
+    } catch (error) {
+        console.error("خطأ في إيقاف الكاميرا:", error);
+    }
 };
 
-/* ================= INIT ================= */
+/* ================= INITIALIZE ================= */
 loadArchives();
+
+// Set initial time
+const timeStr = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+lastScan.textContent = timeStr;
+
+// Enter key to create archive
+document.getElementById("newArchive").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        document.getElementById("addArchiveBtn").click();
+    }
+});
+
+// Enter key to search
+searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        searchInput.oninput();
+    }
+});
 </script>
 
 </body>
